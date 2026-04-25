@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { getProjectBySlug, projects } from "@/data/projects";
 import Cursor from "@/components/portfolio/Cursor";
 import { useSwishSound } from "@/hooks/useSwishSound";
+import heroReel from "@/assets/hero-reel.mp4";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -62,14 +63,20 @@ const ProjectDetail = () => {
           </p>
         </section>
 
-        {/* Hero visual */}
+        {/* Hero video */}
         <section className="mx-auto max-w-[1400px] px-6 md:px-12">
-          <div
-            className={`relative h-[60vh] overflow-hidden rounded-[28px] border border-border bg-gradient-to-br ${project.hero}`}
-          >
-            <div className="absolute inset-0 flex items-end p-8 md:p-12">
-              <span className="text-[11px] tracking-[0.4em] text-muted-foreground">
-                ⌖ FEATURED VISUAL
+          <div className="relative aspect-video overflow-hidden rounded-[28px] border border-border bg-black">
+            <video
+              src={heroReel}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 flex items-end p-8 md:p-12">
+              <span className="text-[11px] tracking-[0.4em] text-white/70">
+                ⌖ FEATURED REEL
               </span>
             </div>
           </div>
