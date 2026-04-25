@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useHoverSound } from "@/hooks/useHoverSound";
 
 interface SubBlock {
   label: string;
