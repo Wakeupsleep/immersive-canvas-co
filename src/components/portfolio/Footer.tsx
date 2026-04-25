@@ -17,9 +17,15 @@ const Footer = () => {
           Available for freelance projects, retained partnerships, and ambitious
           brands ready to stand out.
         </p>
-        <Button size="lg" className="mt-10 h-16 rounded-2xl px-10 text-base font-semibold">
-          Start a Project
-          <ArrowUpRight className="ml-1 h-5 w-5" />
+        <Button
+          asChild
+          size="lg"
+          className="mt-10 h-16 rounded-2xl px-10 text-base font-semibold"
+        >
+          <a href="mailto:ashokthapa.np@gmail.com?subject=New%20Project%20Inquiry&body=Hi%20Ashok%2C%0A%0AI%27d%20love%20to%20start%20a%20project%20with%20you.%0A%0A">
+            Start a Project
+            <ArrowUpRight className="ml-1 h-5 w-5" />
+          </a>
         </Button>
 
         <div className="mt-24 flex flex-col gap-6 border-t border-border pt-10 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
@@ -27,7 +33,12 @@ const Footer = () => {
           <div className="flex gap-6">
             <a href="#" className="transition-smooth hover:text-foreground">Instagram</a>
             <a href="#" className="transition-smooth hover:text-foreground">Behance</a>
-            <a href="#" className="transition-smooth hover:text-foreground">Email</a>
+            <a
+              href="mailto:ashokthapa.np@gmail.com"
+              className="transition-smooth hover:text-foreground"
+            >
+              Email
+            </a>
           </div>
         </div>
       </div>
