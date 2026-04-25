@@ -6,24 +6,21 @@ interface SubBlock {
 }
 
 interface ProjectCardProps {
-  tag: string;
+  tag?: string;
   title: string;
   description: string;
   blocks?: SubBlock[];
   featured?: boolean;
 }
 
-const ProjectCard = ({ tag, title, description, blocks, featured }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, blocks, featured }: ProjectCardProps) => {
   return (
     <article
       className={`group relative cursor-pointer overflow-hidden rounded-[28px] border border-border bg-gradient-card p-8 transition-smooth hover:-translate-y-2 hover:border-foreground/30 hover:shadow-card md:p-12 ${
         featured ? "md:col-span-2" : ""
       }`}
     >
-      <div className="mb-8 flex items-start justify-between">
-        <span className="text-[11px] font-semibold tracking-[0.4em] text-accent">
-          {tag}
-        </span>
+      <div className="mb-8 flex items-start justify-end">
         <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border transition-smooth group-hover:rotate-45 group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
           <ArrowUpRight className="h-5 w-5" />
         </div>
