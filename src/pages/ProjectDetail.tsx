@@ -80,32 +80,6 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        {/* Sections */}
-        <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-32">
-          <div className="grid gap-16 md:gap-24">
-            {project.sections.map((s, i) => (
-              <article
-                key={s.label}
-                className="grid gap-6 border-t border-border pt-10 md:grid-cols-12 md:gap-12"
-              >
-                <div className="md:col-span-3">
-                  <p className="text-[11px] tracking-[0.4em] text-accent">
-                    {String(i + 1).padStart(2, "0")} / {s.label}
-                  </p>
-                </div>
-                <div className="md:col-span-9">
-                  <h2 className="font-display text-4xl leading-[1.05] tracking-tight md:text-6xl">
-                    {s.heading}
-                  </h2>
-                  <p className="mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
-                    {s.body}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
         {/* Gallery */}
         <section className="mx-auto max-w-[1400px] px-6 pb-24 md:px-12 md:pb-32">
           <p className="mb-8 text-[11px] tracking-[0.4em] text-accent">
