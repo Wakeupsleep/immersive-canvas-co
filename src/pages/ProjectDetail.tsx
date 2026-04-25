@@ -81,6 +81,14 @@ const ProjectDetail = () => {
             {project.gallery.map((src, i) => (
               <div
                 key={src}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  // Wait for the expand animation to begin so the centered
+                  // position reflects the expanded size.
+                  window.setTimeout(() => {
+                    el.scrollIntoView({ behavior: "smooth", block: "center" });
+                  }, 120);
+                }}
                 className={`group/img relative overflow-hidden rounded-2xl border border-border bg-secondary/30 row-span-2 transition-all duration-500 ease-out hover:!col-span-3 hover:!row-span-4 hover:z-10 hover:shadow-card ${
                   i === 0 ? "md:col-span-2 md:row-span-2" : ""
                 }`}
