@@ -3,10 +3,12 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getProjectBySlug, projects } from "@/data/projects";
 import Cursor from "@/components/portfolio/Cursor";
+import { useSwishSound } from "@/hooks/useSwishSound";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
+  const playSwish = useSwishSound();
 
   if (!project) {
     return (
@@ -37,6 +39,8 @@ const ProjectDetail = () => {
         <header className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 md:px-12">
           <Link
             to="/"
+            onMouseEnter={playSwish}
+            onClick={playSwish}
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-smooth hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" /> Back
