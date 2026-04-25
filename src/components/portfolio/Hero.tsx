@@ -33,11 +33,12 @@ const Hero = () => {
             </a>
           </Button>
           <Button
+            asChild
             size="lg"
             variant="outline"
             className="h-14 rounded-2xl border-border bg-transparent px-8 text-base font-semibold hover:bg-secondary"
           >
-            View Projects
+            <a href="#work">View Projects</a>
           </Button>
         </div>
       </div>
