@@ -57,14 +57,6 @@ const ProjectDetail = () => {
           <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
             {project.description}
           </p>
-
-          {/* Meta */}
-          <div className="mt-12 grid grid-cols-2 gap-6 border-t border-border pt-8 md:grid-cols-4">
-            <Meta label="CLIENT" value={project.client} />
-            <Meta label="ROLE" value={project.role} />
-            <Meta label="YEAR" value={project.year} />
-            <Meta label="CATEGORY" value={project.category} />
-          </div>
         </section>
 
         {/* Hero visual */}
