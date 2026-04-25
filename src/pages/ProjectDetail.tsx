@@ -3,10 +3,12 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getProjectBySlug, projects } from "@/data/projects";
 import Cursor from "@/components/portfolio/Cursor";
+import { useSwishSound } from "@/hooks/useSwishSound";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
+  const playSwish = useSwishSound();
 
   if (!project) {
     return (
