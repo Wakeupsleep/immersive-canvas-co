@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useHoverSound } from "@/hooks/useHoverSound";
 
 interface SubBlock {
   label: string;
@@ -14,8 +15,11 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ title, description, blocks, featured }: ProjectCardProps) => {
+  const playHoverSound = useHoverSound();
+
   return (
     <article
+      onMouseEnter={playHoverSound}
       className={`group relative cursor-pointer overflow-hidden rounded-[28px] border border-border bg-gradient-card p-8 transition-smooth hover:-translate-y-2 hover:border-foreground/30 hover:shadow-card md:p-12 ${
         featured ? "md:col-span-2" : ""
       }`}
