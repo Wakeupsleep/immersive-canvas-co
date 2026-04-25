@@ -22,8 +22,8 @@ const Projects = () => {
         <ProjectCard
           featured
           tag="FEATURED"
-          title="Offline Campaign Series"
-          description="Outdoor branding story with cinematic motion and bold visuals built for citywide impact."
+          title="Illustrations"
+          description="Illustrations that convey culture and lifestyle by visually expressing traditions, daily life, and unique ways of living."
           blocks={[
             { label: "OVERVIEW", text: "Campaign goals and concept." },
             { label: "PROCESS", text: "Research and execution." },
