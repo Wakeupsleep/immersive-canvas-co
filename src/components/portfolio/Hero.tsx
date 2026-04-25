@@ -26,9 +26,11 @@ const Hero = () => {
           Graphic & Motion designer with 6+ years of experience in branding, social media, & motion graphics, delivering impactful visually striking designs.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Button size="lg" className="h-14 rounded-2xl px-8 text-base font-semibold">
-            Hire Me
-            <ArrowUpRight className="ml-1 h-5 w-5" />
+          <Button asChild size="lg" className="h-14 rounded-2xl px-8 text-base font-semibold">
+            <a href="mailto:ashokthapa.np@gmail.com">
+              Hire Me
+              <ArrowUpRight className="ml-1 h-5 w-5" />
+            </a>
           </Button>
           <Button
             size="lg"
