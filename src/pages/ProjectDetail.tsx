@@ -114,7 +114,7 @@ const ProjectDetail = () => {
                 {nextProject.title}
               </h2>
             </div>
-            <Link to={`/projects/${nextProject.slug}`}>
+            <Link to={`/projects/${nextProject.slug}`} onClick={playSwish}>
               <Button size="lg" className="h-16 rounded-2xl px-10 text-base font-semibold">
                 View Next
                 <ArrowUpRight className="ml-1 h-5 w-5" />
