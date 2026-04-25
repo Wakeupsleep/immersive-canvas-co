@@ -32,18 +32,18 @@ const Projects = () => {
         />
         <ProjectCard
           tag="TRENDING"
-          title="Brand Poster Collection"
+          title="Motions"
           description="Editorial poster system designed like a premium visual series."
         />
         <ProjectCard
           tag="TOP PICKS"
-          title="Social Media Ads"
+          title="Projects"
           description="Fast-paced campaign visuals engineered for attention."
         />
         <ProjectCard
           featured
           tag="NEW RELEASE"
-          title="Packaging Explorations"
+          title="Research"
           description="Luxury packaging concepts with shelf-impact storytelling and tactile detailing."
         />
       </div>
