@@ -10,21 +10,20 @@ const Hero = () => {
       </div>
 
       <div className="absolute left-6 top-6 text-[11px] tracking-[0.4em] text-muted-foreground md:left-20 md:top-10">
-        ASHOK / PORTFOLIO ⁠— V.04
+        PORTFOLIO
       </div>
 
       <div className="relative z-10 max-w-6xl">
         <p className="mb-6 text-[11px] tracking-[0.4em] text-accent">
-          ⌖ GRAPHIC DESIGNER · KATHMANDU
+          ⌖ Creative Designer/Animator
         </p>
         <h1 className="font-display text-[18vw] leading-[0.85] tracking-tight md:text-[10rem]">
           Ashok
           <br />
           <span className="italic text-muted-foreground">Thapa</span>
         </h1>
-        <p className="mt-8 max-w-xl text-balance text-lg text-muted-foreground md:text-2xl">
-          Crafting cinematic brands, immersive campaigns, and visuals that feel
-          unforgettable.
+        <p className="mt-8 max-w-xl text-balance text-lg text-muted-foreground md:text-sm font-normal border border-none rounded">
+          Graphic & Motion designer with 6+ years of experience in branding, social media, & motion graphics, delivering impactful visually striking designs.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Button size="lg" className="h-14 rounded-2xl px-8 text-base font-semibold">
