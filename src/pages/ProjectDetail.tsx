@@ -77,11 +77,11 @@ const ProjectDetail = () => {
           <p className="mb-8 text-[11px] tracking-[0.4em] text-accent">
             ⌖ GALLERY
           </p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="grid auto-rows-[180px] grid-cols-1 gap-4 md:auto-rows-[220px] md:grid-cols-3">
             {project.gallery.map((src, i) => (
               <div
                 key={src}
-                className={`overflow-hidden rounded-2xl border border-border bg-secondary/30 ${
+                className={`group/img relative overflow-hidden rounded-2xl border border-border bg-secondary/30 row-span-2 transition-all duration-500 ease-out hover:!col-span-3 hover:!row-span-4 hover:z-10 hover:shadow-card ${
                   i === 0 ? "md:col-span-2 md:row-span-2" : ""
                 }`}
               >
@@ -89,7 +89,7 @@ const ProjectDetail = () => {
                   src={src}
                   alt={`${project.title} visual ${i + 1}`}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-smooth hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02]"
                 />
               </div>
             ))}
