@@ -113,7 +113,51 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
   }
 }
+
+@layer utilities {
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+  .bg-gradient-card {
+    background-image: var(--gradient-card);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .transition-smooth {
+    transition: all 0.5s var(--transition-smooth);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes loader-slide-up {
+  to { transform: translateY(-100%); }
+}
+@keyframes fade-blur-in {
+  from { opacity: 0; filter: blur(12px); transform: translateY(20px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-loader-slide { animation: loader-slide-up 1s cubic-bezier(0.65, 0, 0.35, 1) forwards; animation-delay: 1.8s; }
+.animate-fade-blur { animation: fade-blur-in 1.2s ease forwards; opacity: 0; }
+.animate-marquee { animation: marquee 30s linear infinite; }
+
