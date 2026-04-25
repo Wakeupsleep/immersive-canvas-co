@@ -1,4 +1,5 @@
 import ProjectCard from "./ProjectCard";
+import { projects } from "@/data/projects";
 
 const Projects = () => {
   return (
@@ -19,33 +20,15 @@ const Projects = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <ProjectCard
-          featured
-          tag="FEATURED"
-          title="Illustrations"
-          description="Illustrations that convey culture and lifestyle by visually expressing traditions, daily life, and unique ways of living."
-          blocks={[
-            { label: "OVERVIEW", text: "Campaign goals and concept." },
-            { label: "PROCESS", text: "Research and execution." },
-            { label: "RESULTS", text: "Premium attention impact." },
-          ]}
-        />
-        <ProjectCard
-          tag="TRENDING"
-          title="Motions"
-          description="Editorial poster system designed like a premium visual series."
-        />
-        <ProjectCard
-          tag="TOP PICKS"
-          title="Projects"
-          description="Fast-paced campaign visuals engineered for attention."
-        />
-        <ProjectCard
-          featured
-          tag="NEW RELEASE"
-          title="Research"
-          description="Luxury packaging concepts with shelf-impact storytelling and tactile detailing."
-        />
+        {projects.map((p, i) => (
+          <ProjectCard
+            key={p.slug}
+            slug={p.slug}
+            title={p.title}
+            description={p.description}
+            featured={i === 0 || i === 3}
+          />
+        ))}
       </div>
     </section>
   );

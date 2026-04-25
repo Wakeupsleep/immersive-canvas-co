@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useHoverSound } from "@/hooks/useHoverSound";
 
 interface SubBlock {
@@ -7,6 +8,7 @@ interface SubBlock {
 }
 
 interface ProjectCardProps {
+  slug: string;
   tag?: string;
   title: string;
   description: string;
@@ -14,13 +16,14 @@ interface ProjectCardProps {
   featured?: boolean;
 }
 
-const ProjectCard = ({ title, description, blocks, featured }: ProjectCardProps) => {
+const ProjectCard = ({ slug, title, description, blocks, featured }: ProjectCardProps) => {
   const playHoverSound = useHoverSound();
 
   return (
-    <article
+    <Link
+      to={`/projects/${slug}`}
       onMouseEnter={playHoverSound}
-      className={`group relative cursor-pointer overflow-hidden rounded-[28px] border border-border bg-gradient-card p-8 transition-smooth hover:-translate-y-2 hover:border-foreground/30 hover:shadow-card md:p-12 ${
+      className={`group relative block cursor-pointer overflow-hidden rounded-[28px] border border-border bg-gradient-card p-8 transition-smooth hover:-translate-y-2 hover:border-foreground/30 hover:shadow-card md:p-12 ${
         featured ? "md:col-span-2" : ""
       }`}
     >
@@ -56,7 +59,7 @@ const ProjectCard = ({ title, description, blocks, featured }: ProjectCardProps)
           ))}
         </div>
       )}
-    </article>
+    </Link>
   );
 };
 
