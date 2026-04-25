@@ -48,7 +48,7 @@ export const useSwishSound = () => {
 
       const gain = ctx.createGain();
       gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.exponentialRampToValueAtTime(0.18, now + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.06, now + 0.05);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
 
       noise.connect(filter).connect(gain).connect(ctx.destination);
