@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { getProjectBySlug, projects } from "@/data/projects";
 import Cursor from "@/components/portfolio/Cursor";
 import { useSwishSound } from "@/hooks/useSwishSound";
@@ -41,6 +43,7 @@ const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
   const playSwish = useSwishSound();
+  const [lightbox, setLightbox] = useState<{ src: string; label: string } | null>(null);
 
   if (!project) {
     return (
@@ -133,9 +136,12 @@ const ProjectDetail = () => {
           ) : illustrationImages[project.slug] ? (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
               {illustrationImages[project.slug].map((item) => (
-                <div
+                <button
                   key={item.src}
-                  className={`group/img relative w-full ${item.aspect} overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card`}
+                  type="button"
+                  onClick={() => setLightbox({ src: item.src, label: item.label })}
+                  aria-label={`Open ${item.label}`}
+                  className={`group/img relative w-full ${item.aspect} cursor-zoom-in overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-accent`}
                 >
                   <img
                     src={item.src}
@@ -143,7 +149,7 @@ const ProjectDetail = () => {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02]"
                   />
-                </div>
+                </button>
               ))}
             </div>
           ) : (
@@ -191,6 +197,30 @@ const ProjectDetail = () => {
           </div>
         </section>
       </main>
+
+      <Dialog open={!!lightbox} onOpenChange={(open) => !open && setLightbox(null)}>
+        <DialogContent
+          className="max-w-[95vw] border-border bg-background/95 p-0 sm:max-w-[90vw] md:max-w-5xl [&>button]:hidden"
+        >
+          {lightbox && (
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setLightbox(null)}
+                aria-label="Close preview"
+                className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-smooth hover:bg-foreground hover:text-background"
+              >
+                <X className="h-4 w-4" />
+              </button>
+              <img
+                src={lightbox.src}
+                alt={lightbox.label}
+                className="mx-auto max-h-[85vh] w-auto max-w-full rounded-lg object-contain"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
