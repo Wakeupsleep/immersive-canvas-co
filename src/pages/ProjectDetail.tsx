@@ -43,6 +43,7 @@ const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
   const playSwish = useSwishSound();
+  const [lightbox, setLightbox] = useState<{ src: string; label: string } | null>(null);
 
   if (!project) {
     return (
