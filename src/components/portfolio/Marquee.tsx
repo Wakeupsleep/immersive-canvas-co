@@ -1,15 +1,15 @@
 const items = [
   "Brand Identity",
   "★",
-  "Campaign Design",
+  "Visual Identity",
   "★",
-  "Poster Art",
+  "Illustration",
   "★",
-  "Packaging",
+  "Creative Direction",
   "★",
   "Motion Visuals",
   "★",
-  "Editorial",
+  "Digital Design",
   "★",
 ];
 

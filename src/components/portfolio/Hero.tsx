@@ -45,7 +45,7 @@ const Hero = () => {
 
       <div className="absolute bottom-10 right-6 hidden text-right text-[11px] tracking-[0.4em] text-muted-foreground md:block md:right-20">
         SCROLL ↓<br />
-        <span className="mt-2 block text-foreground/40">04 PROJECTS</span>
+        <span className="mt-2 block text-foreground/40">TO EXPLORE</span>
       </div>
     </section>
   );

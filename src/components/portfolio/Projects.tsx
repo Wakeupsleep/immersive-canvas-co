@@ -7,15 +7,14 @@ const Projects = () => {
       <div className="mb-16 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
         <div>
           <p className="mb-3 text-[11px] tracking-[0.4em] text-accent">
-            ⌖ SELECTED WORK / 2024 — 2026
+            ⌖ SELECTED PROJECTS
           </p>
           <h2 className="font-display text-5xl leading-[0.9] tracking-tight md:text-7xl">
-            Project <span className="italic text-muted-foreground">Pages</span>
+            Project <span className="italic text-muted-foreground"></span>
           </h2>
         </div>
         <p className="max-w-md text-base text-muted-foreground md:text-lg">
-          A curated set of cinematic brand systems, campaigns, and editorial
-          experiments built for ambitious clients.
+          A visual exploration of identity and motion, Build to communicate, engage and stand apart.
         </p>
       </div>
 
