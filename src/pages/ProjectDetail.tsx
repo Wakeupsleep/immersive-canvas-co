@@ -300,7 +300,7 @@ const ProjectDetail = () => {
         <DialogContent
           className="max-w-[95vw] border-border bg-background/95 p-0 sm:max-w-[90vw] md:max-w-5xl [&>button]:hidden"
         >
-          {lightbox && (
+          {lightbox?.type === "image" && (
             <div className="relative">
               <button
                 type="button"
@@ -315,6 +315,51 @@ const ProjectDetail = () => {
                 alt={lightbox.label}
                 className="mx-auto max-h-[85vh] w-auto max-w-full rounded-lg object-contain"
               />
+            </div>
+          )}
+          {lightbox?.type === "pdf" && (
+            <div className="relative flex max-h-[90vh] flex-col">
+              <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-border bg-background/95 px-5 py-3 backdrop-blur">
+                <div>
+                  <p className="text-[10px] tracking-[0.3em] text-muted-foreground">
+                    ⌖ CASE STUDY
+                  </p>
+                  <p className="text-sm font-medium text-foreground">
+                    {lightbox.project.title}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={lightbox.project.pdf}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-background/80 px-4 text-xs tracking-wider text-foreground transition-smooth hover:bg-foreground hover:text-background"
+                  >
+                    Open PDF <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setLightbox(null)}
+                    aria-label="Close preview"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/80 text-foreground transition-smooth hover:bg-foreground hover:text-background"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+              <div className="overflow-y-auto bg-black/40 p-4 sm:p-6">
+                <div className="mx-auto flex max-w-3xl flex-col gap-4">
+                  {Array.from({ length: lightbox.project.pageCount }, (_, i) => i + 1).map((n) => (
+                    <img
+                      key={n}
+                      src={pageUrl(lightbox.project.pagesDir, n, lightbox.project.pagePad)}
+                      alt={`${lightbox.project.title} page ${n}`}
+                      loading="lazy"
+                      className="w-full rounded-lg border border-border/60 shadow-lg"
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           )}
         </DialogContent>
