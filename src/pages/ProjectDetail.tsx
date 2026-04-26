@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { getProjectBySlug, projects } from "@/data/projects";
 import Cursor from "@/components/portfolio/Cursor";
 import { useSwishSound } from "@/hooks/useSwishSound";
