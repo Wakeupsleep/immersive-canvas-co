@@ -130,6 +130,22 @@ const ProjectDetail = () => {
                 </div>
               ))}
             </div>
+          ) : illustrationImages[project.slug] ? (
+            <div className="columns-1 gap-4 sm:columns-2 md:columns-3 [&>*]:mb-4 [&>*]:break-inside-avoid">
+              {illustrationImages[project.slug].map((item, i) => (
+                <div
+                  key={item.src}
+                  className={`group/img relative ${item.aspect} overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card`}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.label}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02]"
+                  />
+                </div>
+              ))}
+            </div>
           ) : (
             <div className="grid auto-rows-[220px] grid-cols-1 gap-4 md:auto-rows-[260px] md:grid-cols-3">
               {project.gallery.map((src, i) => (
