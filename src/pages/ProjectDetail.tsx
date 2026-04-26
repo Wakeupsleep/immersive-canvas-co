@@ -4,7 +4,13 @@ import { Button } from "@/components/ui/button";
 import { getProjectBySlug, projects } from "@/data/projects";
 import Cursor from "@/components/portfolio/Cursor";
 import { useSwishSound } from "@/hooks/useSwishSound";
-import heroReel from "@/assets/hero-reel.mp4";
+import motion1 from "@/assets/motion-1.mp4";
+import motion2 from "@/assets/motion-2.mp4";
+import motion3 from "@/assets/motion-3.mp4";
+
+const motionVideos: Record<string, string[]> = {
+  motions: [motion1, motion2, motion3],
+};
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -63,51 +69,53 @@ const ProjectDetail = () => {
           </p>
         </section>
 
-        {/* Hero video */}
-        <section className="mx-auto max-w-[1400px] px-6 md:px-12">
-          <div className="relative aspect-video overflow-hidden rounded-[28px] border border-border bg-black">
-            <video
-              src={heroReel}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-full w-full object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 flex items-end p-8 md:p-12">
-              <span className="text-[11px] tracking-[0.4em] text-white/70">
-                ⌖ FEATURED REEL
-              </span>
-            </div>
-          </div>
-        </section>
-
         {/* Gallery */}
         <section className="mx-auto max-w-[1400px] px-6 pb-24 md:px-12 md:pb-32">
           <p className="mb-8 text-[11px] tracking-[0.4em] text-accent">
             ⌖ GALLERY
           </p>
-          <div className="grid auto-rows-[220px] grid-cols-1 gap-4 md:auto-rows-[260px] md:grid-cols-3">
-            {project.gallery.map((src, i) => (
-              <div
-                key={src}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  window.setTimeout(() => {
-                    el.scrollIntoView({ behavior: "smooth", block: "center" });
-                  }, 120);
-                }}
-                className="group/img relative overflow-hidden rounded-2xl border border-border bg-secondary/30 row-span-2 transition-all duration-500 ease-out hover:z-10 hover:shadow-card md:hover:col-span-3 md:hover:row-span-3"
-              >
-                <img
-                  src={src}
-                  alt={`${project.title} visual ${i + 1}`}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02]"
-                />
-              </div>
-            ))}
-          </div>
+          {motionVideos[project.slug] ? (
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {motionVideos[project.slug].map((src, i) => (
+                <div
+                  key={src}
+                  className="group/vid relative aspect-[9/16] overflow-hidden rounded-2xl border border-border bg-black transition-all duration-500 ease-out hover:z-10 hover:shadow-card"
+                >
+                  <video
+                    src={src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    aria-label={`${project.title} motion ${i + 1}`}
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/vid:scale-[1.02]"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid auto-rows-[220px] grid-cols-1 gap-4 md:auto-rows-[260px] md:grid-cols-3">
+              {project.gallery.map((src, i) => (
+                <div
+                  key={src}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget;
+                    window.setTimeout(() => {
+                      el.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }, 120);
+                  }}
+                  className="group/img relative overflow-hidden rounded-2xl border border-border bg-secondary/30 row-span-2 transition-all duration-500 ease-out hover:z-10 hover:shadow-card md:hover:col-span-3 md:hover:row-span-3"
+                >
+                  <img
+                    src={src}
+                    alt={`${project.title} visual ${i + 1}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02]"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Next project */}
