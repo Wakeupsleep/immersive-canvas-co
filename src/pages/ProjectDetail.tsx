@@ -19,10 +19,60 @@ import illMusic2 from "@/assets/ill-music2.png";
 import illBike1 from "@/assets/ill-bike1.png";
 import illBike2 from "@/assets/ill-bike2.png";
 import illArt2 from "@/assets/ill-art2.png";
+import projBranding1 from "@/assets/proj-branding-1.jpg";
+import projBranding2 from "@/assets/proj-branding-2.jpg";
+import projBranding3 from "@/assets/proj-branding-3.jpg";
+import projSuperfest1 from "@/assets/proj-superfest-1.jpg";
+import projSuperfest2 from "@/assets/proj-superfest-2.jpg";
+import projSuperfest3 from "@/assets/proj-superfest-3.jpg";
+import projAnime1 from "@/assets/proj-anime-1.jpg";
+import projAnime2 from "@/assets/proj-anime-2.jpg";
+import projAnime3 from "@/assets/proj-anime-3.jpg";
 
 const motionVideos: Record<string, string[]> = {
   motions: [motion1, motion2, motion3],
 };
+
+interface PdfProject {
+  title: string;
+  covers: string[];
+  pdf: string;
+  pageCount: number;
+  pagesDir: string;
+  pagePad: number;
+}
+
+const pdfProjects: Record<string, PdfProject[]> = {
+  projects: [
+    {
+      title: "Pathao — Offline Branding",
+      covers: [projBranding1, projBranding2, projBranding3],
+      pdf: "/projects/branding.pdf",
+      pageCount: 26,
+      pagesDir: "/projects/branding-pages",
+      pagePad: 2,
+    },
+    {
+      title: "Pathao Super Fest 2025",
+      covers: [projSuperfest1, projSuperfest2, projSuperfest3],
+      pdf: "/projects/superfest.pdf",
+      pageCount: 1,
+      pagesDir: "/projects/superfest-pages",
+      pagePad: 1,
+    },
+    {
+      title: "Anime Fest 2025",
+      covers: [projAnime1, projAnime2, projAnime3],
+      pdf: "/projects/animefest.pdf",
+      pageCount: 7,
+      pagesDir: "/projects/animefest-pages",
+      pagePad: 1,
+    },
+  ],
+};
+
+const pageUrl = (dir: string, n: number, pad: number) =>
+  `${dir}/p-${String(n).padStart(pad, "0")}.jpg`;
 
 const illustrationImages: Record<string, { src: string; aspect: string; label: string }[]> = {
   illustrations: [
@@ -43,7 +93,11 @@ const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
   const playSwish = useSwishSound();
-  const [lightbox, setLightbox] = useState<{ src: string; label: string } | null>(null);
+  const [lightbox, setLightbox] = useState<
+    | { type: "image"; src: string; label: string }
+    | { type: "pdf"; project: PdfProject }
+    | null
+  >(null);
 
   if (!project) {
     return (
@@ -139,7 +193,7 @@ const ProjectDetail = () => {
                 <button
                   key={item.src}
                   type="button"
-                  onClick={() => setLightbox({ src: item.src, label: item.label })}
+                  onClick={() => setLightbox({ type: "image", src: item.src, label: item.label })}
                   aria-label={`Open ${item.label}`}
                   className={`group/img relative w-full ${item.aspect} cursor-zoom-in overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-accent`}
                 >
@@ -149,6 +203,50 @@ const ProjectDetail = () => {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02]"
                   />
+                </button>
+              ))}
+            </div>
+          ) : pdfProjects[project.slug] ? (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {pdfProjects[project.slug].map((item) => (
+                <button
+                  key={item.title}
+                  type="button"
+                  onClick={() => setLightbox({ type: "pdf", project: item })}
+                  aria-label={`Open ${item.title} preview`}
+                  className="group/pdf flex cursor-zoom-in flex-col overflow-hidden rounded-2xl border border-border bg-secondary/30 text-left transition-all duration-500 ease-out hover:-translate-y-1 hover:border-foreground/30 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-black">
+                    <img
+                      src={item.covers[0]}
+                      alt={`${item.title} cover`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/pdf:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-1 p-1">
+                    {item.covers.slice(1, 3).map((c, i) => (
+                      <div key={c} className="relative aspect-square overflow-hidden rounded-md bg-black">
+                        <img
+                          src={c}
+                          alt={`${item.title} preview ${i + 2}`}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between gap-3 border-t border-border px-5 py-4">
+                    <div>
+                      <p className="text-[10px] tracking-[0.3em] text-muted-foreground">
+                        ⌖ CASE STUDY
+                      </p>
+                      <p className="mt-1 text-base font-medium text-foreground">
+                        {item.title}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="h-5 w-5 text-foreground/60 transition-transform group-hover/pdf:rotate-45 group-hover/pdf:text-foreground" />
+                  </div>
                 </button>
               ))}
             </div>
@@ -202,7 +300,7 @@ const ProjectDetail = () => {
         <DialogContent
           className="max-w-[95vw] border-border bg-background/95 p-0 sm:max-w-[90vw] md:max-w-5xl [&>button]:hidden"
         >
-          {lightbox && (
+          {lightbox?.type === "image" && (
             <div className="relative">
               <button
                 type="button"
@@ -217,6 +315,51 @@ const ProjectDetail = () => {
                 alt={lightbox.label}
                 className="mx-auto max-h-[85vh] w-auto max-w-full rounded-lg object-contain"
               />
+            </div>
+          )}
+          {lightbox?.type === "pdf" && (
+            <div className="relative flex max-h-[90vh] flex-col">
+              <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-border bg-background/95 px-5 py-3 backdrop-blur">
+                <div>
+                  <p className="text-[10px] tracking-[0.3em] text-muted-foreground">
+                    ⌖ CASE STUDY
+                  </p>
+                  <p className="text-sm font-medium text-foreground">
+                    {lightbox.project.title}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={lightbox.project.pdf}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-background/80 px-4 text-xs tracking-wider text-foreground transition-smooth hover:bg-foreground hover:text-background"
+                  >
+                    Open PDF <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setLightbox(null)}
+                    aria-label="Close preview"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/80 text-foreground transition-smooth hover:bg-foreground hover:text-background"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+              <div className="overflow-y-auto bg-black/40 p-4 sm:p-6">
+                <div className="mx-auto flex max-w-3xl flex-col gap-4">
+                  {Array.from({ length: lightbox.project.pageCount }, (_, i) => i + 1).map((n) => (
+                    <img
+                      key={n}
+                      src={pageUrl(lightbox.project.pagesDir, n, lightbox.project.pagePad)}
+                      alt={`${lightbox.project.title} page ${n}`}
+                      loading="lazy"
+                      className="w-full rounded-lg border border-border/60 shadow-lg"
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           )}
         </DialogContent>
