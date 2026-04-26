@@ -197,6 +197,30 @@ const ProjectDetail = () => {
           </div>
         </section>
       </main>
+
+      <Dialog open={!!lightbox} onOpenChange={(open) => !open && setLightbox(null)}>
+        <DialogContent
+          className="max-w-[95vw] border-border bg-background/95 p-0 sm:max-w-[90vw] md:max-w-5xl [&>button]:hidden"
+        >
+          {lightbox && (
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setLightbox(null)}
+                aria-label="Close preview"
+                className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-smooth hover:bg-foreground hover:text-background"
+              >
+                <X className="h-4 w-4" />
+              </button>
+              <img
+                src={lightbox.src}
+                alt={lightbox.label}
+                className="mx-auto max-h-[85vh] w-auto max-w-full rounded-lg object-contain"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
