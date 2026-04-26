@@ -136,9 +136,12 @@ const ProjectDetail = () => {
           ) : illustrationImages[project.slug] ? (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
               {illustrationImages[project.slug].map((item) => (
-                <div
+                <button
                   key={item.src}
-                  className={`group/img relative w-full ${item.aspect} overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card`}
+                  type="button"
+                  onClick={() => setLightbox({ src: item.src, label: item.label })}
+                  aria-label={`Open ${item.label}`}
+                  className={`group/img relative w-full ${item.aspect} cursor-zoom-in overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-accent`}
                 >
                   <img
                     src={item.src}
@@ -146,7 +149,7 @@ const ProjectDetail = () => {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02]"
                   />
-                </div>
+                </button>
               ))}
             </div>
           ) : (
