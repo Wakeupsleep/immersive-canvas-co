@@ -7,9 +7,34 @@ import { useSwishSound } from "@/hooks/useSwishSound";
 import motion1 from "@/assets/motion-1.mp4";
 import motion2 from "@/assets/motion-2.mp4";
 import motion3 from "@/assets/motion-3.mp4";
+import illBuddha from "@/assets/ill-buddha.png";
+import illDog from "@/assets/ill-dog.png";
+import illArt3 from "@/assets/ill-art3.png";
+import illNike from "@/assets/ill-nike.png";
+import illOwl from "@/assets/ill-owl.png";
+import illMusic from "@/assets/ill-music.png";
+import illMusic2 from "@/assets/ill-music2.png";
+import illBike1 from "@/assets/ill-bike1.png";
+import illBike2 from "@/assets/ill-bike2.png";
+import illArt2 from "@/assets/ill-art2.png";
 
 const motionVideos: Record<string, string[]> = {
   motions: [motion1, motion2, motion3],
+};
+
+const illustrationImages: Record<string, { src: string; aspect: string; label: string }[]> = {
+  illustrations: [
+    { src: illBuddha, aspect: "aspect-[3/4]", label: "Buddha stupa illustration" },
+    { src: illDog, aspect: "aspect-[2/3]", label: "Adoption poster" },
+    { src: illArt3, aspect: "aspect-square", label: "Bhairav mask" },
+    { src: illNike, aspect: "aspect-square", label: "Nike sneaker illustration" },
+    { src: illOwl, aspect: "aspect-square", label: "Owl character" },
+    { src: illMusic, aspect: "aspect-square", label: "Boombox figure" },
+    { src: illMusic2, aspect: "aspect-square", label: "Cassette and pencil" },
+    { src: illBike1, aspect: "aspect-square", label: "Motorcycle rider" },
+    { src: illBike2, aspect: "aspect-square", label: "Bicycle rider" },
+    { src: illArt2, aspect: "aspect-square", label: "Temple guardians" },
+  ],
 };
 
 const ProjectDetail = () => {
