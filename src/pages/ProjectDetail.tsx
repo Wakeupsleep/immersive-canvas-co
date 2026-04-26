@@ -19,10 +19,60 @@ import illMusic2 from "@/assets/ill-music2.png";
 import illBike1 from "@/assets/ill-bike1.png";
 import illBike2 from "@/assets/ill-bike2.png";
 import illArt2 from "@/assets/ill-art2.png";
+import projBranding1 from "@/assets/proj-branding-1.jpg";
+import projBranding2 from "@/assets/proj-branding-2.jpg";
+import projBranding3 from "@/assets/proj-branding-3.jpg";
+import projSuperfest1 from "@/assets/proj-superfest-1.jpg";
+import projSuperfest2 from "@/assets/proj-superfest-2.jpg";
+import projSuperfest3 from "@/assets/proj-superfest-3.jpg";
+import projAnime1 from "@/assets/proj-anime-1.jpg";
+import projAnime2 from "@/assets/proj-anime-2.jpg";
+import projAnime3 from "@/assets/proj-anime-3.jpg";
 
 const motionVideos: Record<string, string[]> = {
   motions: [motion1, motion2, motion3],
 };
+
+interface PdfProject {
+  title: string;
+  covers: string[];
+  pdf: string;
+  pageCount: number;
+  pagesDir: string;
+  pagePad: number;
+}
+
+const pdfProjects: Record<string, PdfProject[]> = {
+  projects: [
+    {
+      title: "Pathao — Offline Branding",
+      covers: [projBranding1, projBranding2, projBranding3],
+      pdf: "/projects/branding.pdf",
+      pageCount: 26,
+      pagesDir: "/projects/branding-pages",
+      pagePad: 2,
+    },
+    {
+      title: "Pathao Super Fest 2025",
+      covers: [projSuperfest1, projSuperfest2, projSuperfest3],
+      pdf: "/projects/superfest.pdf",
+      pageCount: 1,
+      pagesDir: "/projects/superfest-pages",
+      pagePad: 1,
+    },
+    {
+      title: "Anime Fest 2025",
+      covers: [projAnime1, projAnime2, projAnime3],
+      pdf: "/projects/animefest.pdf",
+      pageCount: 7,
+      pagesDir: "/projects/animefest-pages",
+      pagePad: 1,
+    },
+  ],
+};
+
+const pageUrl = (dir: string, n: number, pad: number) =>
+  `${dir}/p-${String(n).padStart(pad, "0")}.jpg`;
 
 const illustrationImages: Record<string, { src: string; aspect: string; label: string }[]> = {
   illustrations: [
