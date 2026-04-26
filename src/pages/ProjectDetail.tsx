@@ -79,7 +79,19 @@ const ProjectDetail = () => {
               {motionVideos[project.slug].map((src, i) => (
                 <div
                   key={src}
-                  className="group/vid relative aspect-[9/16] overflow-hidden rounded-2xl border border-border bg-black transition-all duration-500 ease-out hover:z-10 hover:shadow-card"
+                  onMouseEnter={(e) => {
+                    const v = e.currentTarget.querySelector("video");
+                    if (v) {
+                      v.muted = false;
+                      v.volume = 1;
+                      v.play().catch(() => {});
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    const v = e.currentTarget.querySelector("video");
+                    if (v) v.muted = true;
+                  }}
+                  className="group/vid relative aspect-square overflow-hidden rounded-2xl border border-border bg-black transition-all duration-500 ease-out hover:z-10 hover:shadow-card"
                 >
                   <video
                     src={src}
