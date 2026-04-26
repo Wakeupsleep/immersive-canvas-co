@@ -131,11 +131,11 @@ const ProjectDetail = () => {
               ))}
             </div>
           ) : illustrationImages[project.slug] ? (
-            <div className="columns-1 gap-4 sm:columns-2 md:columns-3 [&>*]:mb-4 [&>*]:break-inside-avoid">
-              {illustrationImages[project.slug].map((item, i) => (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+              {illustrationImages[project.slug].map((item) => (
                 <div
                   key={item.src}
-                  className={`group/img relative ${item.aspect} overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card`}
+                  className={`group/img relative w-full ${item.aspect} overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card`}
                 >
                   <img
                     src={item.src}
