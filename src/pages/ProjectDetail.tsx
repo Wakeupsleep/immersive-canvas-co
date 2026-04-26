@@ -193,7 +193,7 @@ const ProjectDetail = () => {
                 <button
                   key={item.src}
                   type="button"
-                  onClick={() => setLightbox({ src: item.src, label: item.label })}
+                  onClick={() => setLightbox({ type: "image", src: item.src, label: item.label })}
                   aria-label={`Open ${item.label}`}
                   className={`group/img relative w-full ${item.aspect} cursor-zoom-in overflow-hidden rounded-2xl border border-border bg-secondary/30 transition-all duration-500 ease-out hover:z-10 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-accent`}
                 >
@@ -203,6 +203,50 @@ const ProjectDetail = () => {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.02]"
                   />
+                </button>
+              ))}
+            </div>
+          ) : pdfProjects[project.slug] ? (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {pdfProjects[project.slug].map((item) => (
+                <button
+                  key={item.title}
+                  type="button"
+                  onClick={() => setLightbox({ type: "pdf", project: item })}
+                  aria-label={`Open ${item.title} preview`}
+                  className="group/pdf flex cursor-zoom-in flex-col overflow-hidden rounded-2xl border border-border bg-secondary/30 text-left transition-all duration-500 ease-out hover:-translate-y-1 hover:border-foreground/30 hover:shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-black">
+                    <img
+                      src={item.covers[0]}
+                      alt={`${item.title} cover`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/pdf:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-1 p-1">
+                    {item.covers.slice(1, 3).map((c, i) => (
+                      <div key={c} className="relative aspect-square overflow-hidden rounded-md bg-black">
+                        <img
+                          src={c}
+                          alt={`${item.title} preview ${i + 2}`}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between gap-3 border-t border-border px-5 py-4">
+                    <div>
+                      <p className="text-[10px] tracking-[0.3em] text-muted-foreground">
+                        ⌖ CASE STUDY
+                      </p>
+                      <p className="mt-1 text-base font-medium text-foreground">
+                        {item.title}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="h-5 w-5 text-foreground/60 transition-transform group-hover/pdf:rotate-45 group-hover/pdf:text-foreground" />
+                  </div>
                 </button>
               ))}
             </div>
