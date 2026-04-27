@@ -124,7 +124,11 @@ const ProjectDetail = () => {
   return (
     <>
       <Cursor />
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="relative min-h-screen bg-background text-foreground">
+        <div className="pointer-events-none fixed inset-0 z-0 opacity-60 blur-2xl" aria-hidden>
+          <HeroBackground />
+        </div>
+        <div className="relative z-10">
         {/* Top bar */}
         <header className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 md:px-12">
           <Link
