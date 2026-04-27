@@ -1,10 +1,11 @@
-import { defineConfig } from "white";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // This tells GitHub Pages to look in the /Immersive-canvas-co/ folder
+  // This is the "One Go" fix: it forces the site to load from your repo folder
   base: "/Immersive-canvas-co/", 
   server: {
     host: "::",
