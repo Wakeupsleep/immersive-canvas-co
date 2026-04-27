@@ -29,6 +29,9 @@ import projSuperfest3 from "@/assets/proj-superfest-3.jpg";
 import projAnime1 from "@/assets/proj-anime-1.jpg";
 import projAnime2 from "@/assets/proj-anime-2.jpg";
 import projAnime3 from "@/assets/proj-anime-3.jpg";
+import projResearch1 from "@/assets/proj-research-1.jpg";
+import projResearch2 from "@/assets/proj-research-2.jpg";
+import projResearch3 from "@/assets/proj-research-3.jpg";
 
 const motionVideos: Record<string, string[]> = {
   motions: [motion1, motion2, motion3],
@@ -67,6 +70,16 @@ const pdfProjects: Record<string, PdfProject[]> = {
       pdf: "/projects/animefest.pdf",
       pageCount: 7,
       pagesDir: "/projects/animefest-pages",
+      pagePad: 1,
+    },
+  ],
+  research: [
+    {
+      title: "User Persona — Research Study",
+      covers: [projResearch1, projResearch2, projResearch3],
+      pdf: "/projects/user-persona.pdf",
+      pageCount: 9,
+      pagesDir: "/projects/userpersona-pages",
       pagePad: 1,
     },
   ],
