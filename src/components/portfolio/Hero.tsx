@@ -11,7 +11,7 @@ const Hero = () => {
         AVAILABLE FOR WORK · 2026
       </div>
 
-      <div className="absolute left-6 top-6 text-[11px] tracking-[0.4em] text-muted-foreground md:left-20 md:top-10">
+      <div className="absolute left-6 top-6 z-10 text-[11px] tracking-[0.4em] text-muted-foreground md:left-20 md:top-10">
         PORTFOLIO
       </div>
 
