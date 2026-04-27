@@ -299,6 +299,7 @@ const ProjectDetail = () => {
             </Link>
           </div>
         </section>
+        </div>
       </main>
 
       <Dialog open={!!lightbox} onOpenChange={(open) => !open && setLightbox(null)}>
