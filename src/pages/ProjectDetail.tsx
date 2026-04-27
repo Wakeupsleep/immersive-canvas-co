@@ -138,8 +138,20 @@ const ProjectDetail = () => {
     <>
       <Cursor />
       <main className="relative min-h-screen bg-background text-foreground">
-        <div className="pointer-events-none fixed inset-0 z-0 opacity-60 blur-2xl" aria-hidden>
-          <HeroBackground />
+        {/* Layered ambient background: gradient wash + blurred color blobs + 3D particles */}
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
+          {/* Base gradient wash */}
+          <div className="absolute inset-0 bg-gradient-hero opacity-90" />
+          {/* Soft color blobs (blurred) */}
+          <div className="absolute -left-32 top-[-10%] h-[55vh] w-[55vh] rounded-full bg-accent/30 blur-[120px]" />
+          <div className="absolute right-[-10%] top-[20%] h-[60vh] w-[60vh] rounded-full bg-primary/25 blur-[140px]" />
+          <div className="absolute bottom-[-15%] left-[20%] h-[50vh] w-[70vh] rounded-full bg-accent/20 blur-[160px]" />
+          {/* 3D particle field, softly blurred so it blends with the gradient */}
+          <div className="absolute inset-0 opacity-50 blur-2xl">
+            <HeroBackground />
+          </div>
+          {/* Subtle vignette to keep edges grounded */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/0 to-background/60" />
         </div>
         <div className="relative z-10">
         {/* Top bar */}
