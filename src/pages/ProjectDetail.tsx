@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { getProjectBySlug, projects } from "@/data/projects";
 import Cursor from "@/components/portfolio/Cursor";
+import HeroBackground from "@/components/portfolio/HeroBackground";
 import { useSwishSound } from "@/hooks/useSwishSound";
 import motion1 from "@/assets/motion-1.mp4";
 import motion2 from "@/assets/motion-2.mp4";
