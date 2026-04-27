@@ -225,7 +225,15 @@ const ProjectDetail = () => {
               ))}
             </div>
           ) : pdfProjects[project.slug] ? (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div
+              className={`mx-auto grid grid-cols-1 gap-6 ${
+                pdfProjects[project.slug].length === 1
+                  ? "max-w-2xl"
+                  : pdfProjects[project.slug].length === 2
+                    ? "max-w-4xl md:grid-cols-2"
+                    : "md:grid-cols-3"
+              }`}
+            >
               {pdfProjects[project.slug].map((item) => (
                 <button
                   key={item.title}
