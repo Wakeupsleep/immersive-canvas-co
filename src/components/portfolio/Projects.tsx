@@ -4,13 +4,18 @@ import { projects } from "@/data/projects";
 const Projects = () => {
   return (
     <section id="work" className="relative overflow-hidden">
-      {/* Blurred ambient background — accent + primary blobs */}
+      {/* Blurred ambient background — accent + primary blobs framing the bento cards */}
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
-        <div className="absolute inset-0 bg-gradient-hero opacity-90" />
-        <div className="absolute -left-32 top-[10%] h-[55vh] w-[55vh] rounded-full bg-accent/30 blur-[120px]" />
-        <div className="absolute right-[-10%] top-[40%] h-[60vh] w-[60vh] rounded-full bg-primary/25 blur-[140px]" />
-        <div className="absolute bottom-[-15%] left-[20%] h-[50vh] w-[70vh] rounded-full bg-accent/20 blur-[160px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/0 to-background/60" />
+        <div className="absolute inset-0 bg-gradient-hero opacity-95" />
+        {/* Side glows */}
+        <div className="absolute -left-40 top-[5%] h-[70vh] w-[70vh] rounded-full bg-accent/45 blur-[140px]" />
+        <div className="absolute -right-40 top-[15%] h-[75vh] w-[75vh] rounded-full bg-primary/40 blur-[150px]" />
+        <div className="absolute -left-32 bottom-[-10%] h-[60vh] w-[80vh] rounded-full bg-accent/35 blur-[160px]" />
+        <div className="absolute -right-32 bottom-[5%] h-[55vh] w-[70vh] rounded-full bg-primary/30 blur-[150px]" />
+        {/* Center wash so glow seeps between the bento cards */}
+        <div className="absolute left-1/2 top-1/2 h-[55vh] w-[70vh] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[180px]" />
+        {/* Soft vignette to ground the section edges */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/0 to-background/50" />
       </div>
 
       <div className="relative mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-32">
