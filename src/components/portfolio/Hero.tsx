@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import HeroBackground from "./HeroBackground";
 
 const Hero = () => {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-hero px-6 pt-32 md:px-20 md:pt-40">
-      <div className="absolute right-6 top-6 flex items-center gap-2 text-[11px] tracking-[0.4em] text-muted-foreground md:right-20 md:top-10">
+      <HeroBackground />
+      <div className="absolute right-6 top-6 z-10 flex items-center gap-2 text-[11px] tracking-[0.4em] text-muted-foreground md:right-20 md:top-10">
         <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
         AVAILABLE FOR WORK · 2026
       </div>
