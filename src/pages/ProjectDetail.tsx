@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { getProjectBySlug, projects } from "@/data/projects";
 import Cursor from "@/components/portfolio/Cursor";
+import HeroBackground from "@/components/portfolio/HeroBackground";
 import { useSwishSound } from "@/hooks/useSwishSound";
 import motion1 from "@/assets/motion-1.mp4";
 import motion2 from "@/assets/motion-2.mp4";
@@ -123,7 +124,11 @@ const ProjectDetail = () => {
   return (
     <>
       <Cursor />
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="relative min-h-screen bg-background text-foreground">
+        <div className="pointer-events-none fixed inset-0 z-0 opacity-60 blur-2xl" aria-hidden>
+          <HeroBackground />
+        </div>
+        <div className="relative z-10">
         {/* Top bar */}
         <header className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 md:px-12">
           <Link
@@ -294,6 +299,7 @@ const ProjectDetail = () => {
             </Link>
           </div>
         </section>
+        </div>
       </main>
 
       <Dialog open={!!lightbox} onOpenChange={(open) => !open && setLightbox(null)}>
