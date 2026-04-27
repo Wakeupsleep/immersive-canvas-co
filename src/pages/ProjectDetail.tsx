@@ -141,17 +141,19 @@ const ProjectDetail = () => {
         {/* Layered ambient background: gradient wash + blurred color blobs + 3D particles */}
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
           {/* Base gradient wash */}
-          <div className="absolute inset-0 bg-gradient-hero opacity-90" />
-          {/* Soft color blobs (blurred) */}
-          <div className="absolute -left-32 top-[-10%] h-[55vh] w-[55vh] rounded-full bg-accent/30 blur-[120px]" />
-          <div className="absolute right-[-10%] top-[20%] h-[60vh] w-[60vh] rounded-full bg-primary/25 blur-[140px]" />
-          <div className="absolute bottom-[-15%] left-[20%] h-[50vh] w-[70vh] rounded-full bg-accent/20 blur-[160px]" />
+          <div className="absolute inset-0 bg-gradient-hero opacity-95" />
+          {/* Strong side blobs so the area outside the bento gallery glows */}
+          <div className="absolute -left-40 top-[-15%] h-[70vh] w-[70vh] rounded-full bg-accent/45 blur-[140px]" />
+          <div className="absolute -right-40 top-[10%] h-[75vh] w-[75vh] rounded-full bg-primary/40 blur-[150px]" />
+          <div className="absolute -left-32 bottom-[-20%] h-[60vh] w-[80vh] rounded-full bg-accent/35 blur-[160px]" />
+          <div className="absolute -right-32 bottom-[-10%] h-[55vh] w-[70vh] rounded-full bg-primary/30 blur-[150px]" />
+          <div className="absolute left-1/2 top-1/2 h-[50vh] w-[60vh] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[180px]" />
           {/* 3D particle field, softly blurred so it blends with the gradient */}
-          <div className="absolute inset-0 opacity-50 blur-2xl">
+          <div className="absolute inset-0 opacity-40 blur-2xl">
             <HeroBackground />
           </div>
           {/* Subtle vignette to keep edges grounded */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/0 to-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/0 to-background/50" />
         </div>
         <div className="relative z-10">
         {/* Top bar */}
