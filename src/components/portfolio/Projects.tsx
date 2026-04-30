@@ -37,6 +37,7 @@ const Projects = () => {
               slug={p.slug}
               title={p.title}
               description={p.description}
+              backgroundImage={p.gallery?.[0]}
               featured={i === 0 || i === 3}
             />
           ))}
