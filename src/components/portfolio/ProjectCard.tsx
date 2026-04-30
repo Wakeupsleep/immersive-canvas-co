@@ -62,7 +62,7 @@ const ProjectCard = ({ slug, title, description, blocks, featured, backgroundIma
       </div>
 
       {blocks && (
-        <div className="mt-10 grid grid-cols-1 gap-3 border-t border-border pt-8 sm:grid-cols-3">
+        <div className="relative z-10 mt-10 grid grid-cols-1 gap-3 border-t border-border pt-8 sm:grid-cols-3">
           {blocks.map((b) => (
             <div
               key={b.label}
