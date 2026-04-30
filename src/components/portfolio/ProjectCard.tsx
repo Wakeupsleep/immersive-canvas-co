@@ -35,12 +35,12 @@ const ProjectCard = ({ slug, title, description, blocks, featured, backgroundIma
       {backgroundImage && (
         <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
           <div
-            className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl opacity-60 transition-smooth group-hover:opacity-80 group-hover:scale-125"
+            className="absolute inset-0 scale-110 bg-cover bg-center blur-xl opacity-90 transition-smooth group-hover:opacity-100 group-hover:scale-125"
             style={{ backgroundImage: `url(${backgroundImage})` }}
           />
           {/* Dark overlay for readability */}
-          <div className="absolute inset-0 bg-background/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
+          <div className="absolute inset-0 bg-background/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-transparent" />
         </div>
       )}
 
