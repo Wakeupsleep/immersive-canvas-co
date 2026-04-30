@@ -32,6 +32,17 @@ import projAnime3 from "@/assets/proj-anime-3.jpg";
 import projResearch1 from "@/assets/proj-research-1.jpg";
 import projResearch2 from "@/assets/proj-research-2.jpg";
 import projResearch3 from "@/assets/proj-research-3.jpg";
+import bgIllustrations from "@/assets/card-bg-illustrations.jpg";
+import bgMotions from "@/assets/card-bg-motions.jpg";
+import bgProjects from "@/assets/card-bg-projects.jpg";
+import bgResearch from "@/assets/card-bg-research.jpg";
+
+const tabBackgrounds: Record<string, string> = {
+  illustrations: bgIllustrations,
+  motions: bgMotions,
+  projects: bgProjects,
+  research: bgResearch,
+};
 
 const motionVideos: Record<string, string[]> = {
   motions: [motion1, motion2, motion3],
@@ -142,6 +153,16 @@ const ProjectDetail = () => {
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
           {/* Base gradient wash */}
           <div className="absolute inset-0 bg-gradient-hero opacity-95" />
+          {/* Per-tab cinematic blurred image */}
+          {tabBackgrounds[project.slug] && (
+            <>
+              <div
+                className="absolute inset-0 scale-110 bg-cover bg-center opacity-40 blur-3xl"
+                style={{ backgroundImage: `url(${tabBackgrounds[project.slug]})` }}
+              />
+              <div className="absolute inset-0 bg-background/60" />
+            </>
+          )}
           {/* Strong side blobs so the area outside the bento gallery glows */}
           <div className="absolute -left-40 top-[-15%] h-[70vh] w-[70vh] rounded-full bg-accent/45 blur-[140px]" />
           <div className="absolute -right-40 top-[10%] h-[75vh] w-[75vh] rounded-full bg-primary/40 blur-[150px]" />
