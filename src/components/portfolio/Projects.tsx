@@ -1,5 +1,16 @@
 import ProjectCard from "./ProjectCard";
 import { projects } from "@/data/projects";
+import bgIllustrations from "@/assets/card-bg-illustrations.jpg";
+import bgMotions from "@/assets/card-bg-motions.jpg";
+import bgProjects from "@/assets/card-bg-projects.jpg";
+import bgResearch from "@/assets/card-bg-research.jpg";
+
+const cardBackgrounds: Record<string, string> = {
+  illustrations: bgIllustrations,
+  motions: bgMotions,
+  projects: bgProjects,
+  research: bgResearch,
+};
 
 const Projects = () => {
   return (
