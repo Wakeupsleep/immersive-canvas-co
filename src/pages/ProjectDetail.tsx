@@ -32,6 +32,17 @@ import projAnime3 from "@/assets/proj-anime-3.jpg";
 import projResearch1 from "@/assets/proj-research-1.jpg";
 import projResearch2 from "@/assets/proj-research-2.jpg";
 import projResearch3 from "@/assets/proj-research-3.jpg";
+import bgIllustrations from "@/assets/card-bg-illustrations.jpg";
+import bgMotions from "@/assets/card-bg-motions.jpg";
+import bgProjects from "@/assets/card-bg-projects.jpg";
+import bgResearch from "@/assets/card-bg-research.jpg";
+
+const tabBackgrounds: Record<string, string> = {
+  illustrations: bgIllustrations,
+  motions: bgMotions,
+  projects: bgProjects,
+  research: bgResearch,
+};
 
 const motionVideos: Record<string, string[]> = {
   motions: [motion1, motion2, motion3],
