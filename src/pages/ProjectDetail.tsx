@@ -153,6 +153,16 @@ const ProjectDetail = () => {
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
           {/* Base gradient wash */}
           <div className="absolute inset-0 bg-gradient-hero opacity-95" />
+          {/* Per-tab cinematic blurred image */}
+          {tabBackgrounds[project.slug] && (
+            <>
+              <div
+                className="absolute inset-0 scale-110 bg-cover bg-center opacity-40 blur-3xl"
+                style={{ backgroundImage: `url(${tabBackgrounds[project.slug]})` }}
+              />
+              <div className="absolute inset-0 bg-background/60" />
+            </>
+          )}
           {/* Strong side blobs so the area outside the bento gallery glows */}
           <div className="absolute -left-40 top-[-15%] h-[70vh] w-[70vh] rounded-full bg-accent/45 blur-[140px]" />
           <div className="absolute -right-40 top-[10%] h-[75vh] w-[75vh] rounded-full bg-primary/40 blur-[150px]" />
