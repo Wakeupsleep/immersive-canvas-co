@@ -50,14 +50,14 @@ const ProjectCard = ({ slug, title, description, blocks, featured, backgroundIma
         </div>
       </div>
 
-      <h3 className="font-display text-4xl leading-[1] tracking-tight md:text-6xl">
+      <h3 className="relative z-10 font-display text-4xl leading-[1] tracking-tight md:text-6xl">
         {title}
       </h3>
-      <p className="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
+      <p className="relative z-10 mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
         {description}
       </p>
 
-      <div className="mt-8 inline-flex items-center gap-2 text-sm text-foreground/70 transition-smooth group-hover:text-accent">
+      <div className="relative z-10 mt-8 inline-flex items-center gap-2 text-sm text-foreground/70 transition-smooth group-hover:text-accent">
         ⌖ View Project
       </div>
 
