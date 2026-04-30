@@ -15,9 +15,10 @@ interface ProjectCardProps {
   description: string;
   blocks?: SubBlock[];
   featured?: boolean;
+  backgroundImage?: string;
 }
 
-const ProjectCard = ({ slug, title, description, blocks, featured }: ProjectCardProps) => {
+const ProjectCard = ({ slug, title, description, blocks, featured, backgroundImage }: ProjectCardProps) => {
   const playWoosh = useWooshSound();
   const playSwish = useSwishSound();
 
@@ -30,7 +31,20 @@ const ProjectCard = ({ slug, title, description, blocks, featured }: ProjectCard
         featured ? "md:col-span-2" : ""
       }`}
     >
-      <div className="mb-8 flex items-start justify-end">
+      {/* Blurred cinematic background image */}
+      {backgroundImage && (
+        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+          <div
+            className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl opacity-60 transition-smooth group-hover:opacity-80 group-hover:scale-125"
+            style={{ backgroundImage: `url(${backgroundImage})` }}
+          />
+          {/* Dark overlay for readability */}
+          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
+        </div>
+      )}
+
+      <div className="relative z-10 mb-8 flex items-start justify-end">
         <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border transition-smooth group-hover:rotate-45 group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
           <ArrowUpRight className="h-5 w-5" />
         </div>
