@@ -6,8 +6,8 @@ const Hero = () => {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-hero px-6 pt-32 md:px-20 md:pt-40">
       <HeroBackground />
-      <div className="absolute right-6 top-6 z-10 gap-2 tracking-[0.4em] md:right-20 md:top-10 bg-muted flex-row text-accent text-xs font-light flex items-start justify-center rounded-md px-4 py-2">
-        <span className="h-2 w-2 animate-pulse rounded-full bg-accent mt-1" />
+      <div className="absolute right-6 top-6 z-10 gap-2 tracking-[0.4em] md:right-20 md:top-10 bg-muted flex-row text-accent text-xs font-light flex items-start justify-center rounded-md">
+        <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
         ➜] Download CV
       </div>
 
