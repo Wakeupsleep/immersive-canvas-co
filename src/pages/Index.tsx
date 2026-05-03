@@ -7,7 +7,7 @@ import Projects from "@/components/portfolio/Projects";
 
 const Index = () => {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="min-h-screen overflow-x-hidden text-foreground">
       <Loader />
       <Cursor />
       <main>

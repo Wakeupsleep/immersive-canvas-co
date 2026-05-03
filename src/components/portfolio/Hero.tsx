@@ -49,7 +49,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-hero px-6 pt-32 md:px-20 md:pt-40">
+    <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-32 md:px-20 md:pt-40">
       <HeroBackground />
       <a
         href="/CV.pdf"

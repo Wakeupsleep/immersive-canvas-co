@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-gradient-hero">
+    <footer className="border-t border-border">
       <div className="mx-auto max-w-[1400px] px-6 py-32 md:px-12 md:py-40">
         <p className="mb-6 text-[11px] tracking-[0.4em] text-accent">
           ⌖ LET'S COLLABORATE
