@@ -6,13 +6,13 @@ const Hero = () => {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-hero px-6 pt-32 md:px-20 md:pt-40">
       <HeroBackground />
-      <div className="absolute right-6 top-6 z-10 flex items-center gap-2 text-[11px] tracking-[0.4em] text-muted-foreground md:right-20 md:top-10">
+      <div className="absolute right-6 top-6 z-10 gap-2 tracking-[0.4em] md:right-20 md:top-10 bg-muted flex-row text-accent text-xs font-light flex items-start justify-center rounded-md">
         <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
-        AVAILABLE FOR WORK · 2026
+        ➜] Download CV
       </div>
 
       <div className="absolute left-6 top-6 z-10 text-[11px] tracking-[0.4em] text-muted-foreground md:left-20 md:top-10">
-        PORTFOLIO
+        {"\n"}
       </div>
 
       <div className="relative z-10 max-w-6xl">
