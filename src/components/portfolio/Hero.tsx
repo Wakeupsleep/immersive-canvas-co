@@ -54,6 +54,7 @@ const Hero = () => {
       <a
         href="/CV.pdf"
         download="Ashok-Thapa-CV.pdf"
+        onMouseEnter={playWhoosh}
         className="absolute right-6 top-6 z-10 gap-2 tracking-[0.4em] md:right-20 md:top-10 bg-muted flex-row text-accent text-xs font-light flex items-center justify-center rounded-md px-4 py-2 hover:bg-secondary transition-colors"
       >
         <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
