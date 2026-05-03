@@ -118,7 +118,11 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--card)) 50%, hsl(var(--background)) 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
   }
