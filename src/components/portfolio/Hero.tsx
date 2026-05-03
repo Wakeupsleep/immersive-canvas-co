@@ -12,7 +12,7 @@ const Hero = () => {
       </div>
 
       <div className="absolute left-6 top-6 z-10 text-[11px] tracking-[0.4em] text-muted-foreground md:left-20 md:top-10">
-        PORTFOLIO
+        {"\n"}
       </div>
 
       <div className="relative z-10 max-w-6xl">
