@@ -14,7 +14,7 @@ const cardBackgrounds: Record<string, string> = {
 
 const Projects = () => {
   return (
-    <section id="work" className="relative isolate overflow-hidden bg-background">
+    <section id="work" className="relative isolate overflow-hidden">
       {/* Blurred ambient background — accent + primary blobs framing the bento cards */}
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
         {/* Side glows */}
