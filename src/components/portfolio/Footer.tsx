@@ -31,13 +31,13 @@ const Footer = () => {
         <div className="mt-24 flex flex-col gap-6 border-t border-border pt-10 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© 2026 Ashok Thapa. Crafted with intent.</p>
           <div className="flex gap-6">
-            <a href="#" className="transition-smooth hover:text-foreground">Instagram</a>
-            <a href="#" className="transition-smooth hover:text-foreground">Behance</a>
+            <a href="#" className="transition-smooth hover:text-foreground">{"\n"}</a>
+            <a href="#" className="transition-smooth hover:text-foreground">{"\n"}</a>
             <a
               href="mailto:ashokthapa.np@gmail.com"
               className="transition-smooth hover:text-foreground"
             >
-              Email
+              {"\n"}
             </a>
           </div>
         </div>
