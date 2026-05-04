@@ -7,8 +7,8 @@ import * as THREE from "three";
  * Pure presentation — no business logic.
  */
 const ParticleField = () => {
-  const points = useRef<THREE.Points>(null);
-  const group = useRef<THREE.Group>(null);
+  const points = useRef<any>(null);
+  const group = useRef<any>(null);
   const mouse = useRef({ x: 0, y: 0 });
 
   const { positions, colors } = useMemo(() => {

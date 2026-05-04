@@ -1,7 +1,6 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Text } from "@react-three/drei";
 import { useMemo, useRef, useState } from "react";
-import type { Mesh } from "three";
 
 const iconConfigs = [
   { slug: "illustrations", label: "Illustrations", x: -4.8, geometry: "torus" as const, scale: 1.05 },
@@ -52,7 +51,7 @@ const ProjectIcon = ({
   colors: ReturnType<typeof useThemeColors>;
 }) => {
   const [hovered, setHovered] = useState(false);
-  const meshRef = useRef<Mesh>(null);
+  const meshRef = useRef<any>(null);
 
   useFrame((state) => {
     if (!meshRef.current) return;
