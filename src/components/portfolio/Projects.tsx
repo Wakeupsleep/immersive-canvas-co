@@ -43,14 +43,19 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {projects.map((p, i) => (
-            <ProjectCard
+            <div
               key={p.slug}
-              slug={p.slug}
-              title={p.title}
-              description={p.description}
-              backgroundImage={cardBackgrounds[p.slug] ?? p.gallery?.[0]}
-              featured={i === 0 || i === 3}
-            />
+              id={`project-${p.slug}`}
+              className={`scroll-mt-24 ${i === 0 || i === 3 ? "md:col-span-2" : ""}`}
+            >
+              <ProjectCard
+                slug={p.slug}
+                title={p.title}
+                description={p.description}
+                backgroundImage={cardBackgrounds[p.slug] ?? p.gallery?.[0]}
+                featured={i === 0 || i === 3}
+              />
+            </div>
           ))}
         </div>
       </div>

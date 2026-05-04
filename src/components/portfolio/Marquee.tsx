@@ -1,23 +1,12 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Text } from "@react-three/drei";
-import { useMemo, useState } from "react";
-import * as THREE from "three";
-import { projects } from "@/data/projects";
+import { useMemo, useRef, useState } from "react";
 
-type IconConfig = {
-  slug: string;
-  label: string;
-  x: number;
-  geometry: "torus" | "octahedron" | "box" | "icosahedron";
-  scale: number;
-  detail?: number;
-};
-
-const iconConfigs: IconConfig[] = [
-  { slug: "illustrations", label: "Illustrations", x: -4.8, geometry: "torus", scale: 1.05 },
-  { slug: "motions", label: "Motions", x: -1.6, geometry: "octahedron", scale: 1.15, detail: 0 },
-  { slug: "projects", label: "Projects", x: 1.6, geometry: "box", scale: 1.05 },
-  { slug: "research", label: "Research", x: 4.8, geometry: "icosahedron", scale: 1.08, detail: 0 },
+const iconConfigs = [
+  { slug: "illustrations", label: "Illustrations", x: -4.8, geometry: "torus" as const, scale: 1.05 },
+  { slug: "motions", label: "Motions", x: -1.6, geometry: "octahedron" as const, scale: 1.15 },
+  { slug: "projects", label: "Projects", x: 1.6, geometry: "box" as const, scale: 1.05 },
+  { slug: "research", label: "Research", x: 4.8, geometry: "icosahedron" as const, scale: 1.08 },
 ];
 
 const useThemeColors = () => {
@@ -58,11 +47,11 @@ const ProjectIcon = ({
   config,
   colors,
 }: {
-  config: IconConfig;
+  config: (typeof iconConfigs)[number];
   colors: ReturnType<typeof useThemeColors>;
 }) => {
   const [hovered, setHovered] = useState(false);
-  const meshRef = THREE.createRef<THREE.Mesh>();
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -91,28 +80,54 @@ const ProjectIcon = ({
         {config.geometry === "torus" && (
           <mesh {...sharedProps}>
             <torusKnotGeometry args={[0.7, 0.22, 160, 24]} />
-            <meshStandardMaterial color={hovered ? colors.accent : colors.foreground} metalness={0.55} roughness={0.18} emissive={hovered ? colors.accent : colors.foreground} emissiveIntensity={hovered ? 0.4 : 0.08} />
+            <meshStandardMaterial
+              color={hovered ? colors.accent : colors.foreground}
+              metalness={0.55}
+              roughness={0.18}
+              emissive={hovered ? colors.accent : colors.foreground}
+              emissiveIntensity={hovered ? 0.4 : 0.08}
+            />
           </mesh>
         )}
 
         {config.geometry === "octahedron" && (
           <mesh {...sharedProps}>
-            <octahedronGeometry args={[0.95, config.detail ?? 0]} />
-            <meshStandardMaterial color={hovered ? colors.accent : colors.foreground} wireframe={hovered} metalness={0.4} roughness={0.22} emissive={hovered ? colors.accent : colors.foreground} emissiveIntensity={hovered ? 0.35 : 0.06} />
+            <octahedronGeometry args={[0.95, 0]} />
+            <meshStandardMaterial
+              color={hovered ? colors.accent : colors.foreground}
+              wireframe={hovered}
+              metalness={0.4}
+              roughness={0.22}
+              emissive={hovered ? colors.accent : colors.foreground}
+              emissiveIntensity={hovered ? 0.35 : 0.06}
+            />
           </mesh>
         )}
 
         {config.geometry === "box" && (
           <mesh {...sharedProps}>
             <boxGeometry args={[1.3, 1.3, 1.3]} />
-            <meshStandardMaterial color={hovered ? colors.accent : colors.foreground} metalness={0.5} roughness={0.18} emissive={hovered ? colors.accent : colors.foreground} emissiveIntensity={hovered ? 0.32 : 0.06} />
+            <meshStandardMaterial
+              color={hovered ? colors.accent : colors.foreground}
+              metalness={0.5}
+              roughness={0.18}
+              emissive={hovered ? colors.accent : colors.foreground}
+              emissiveIntensity={hovered ? 0.32 : 0.06}
+            />
           </mesh>
         )}
 
         {config.geometry === "icosahedron" && (
           <mesh {...sharedProps}>
-            <icosahedronGeometry args={[0.98, config.detail ?? 0]} />
-            <meshStandardMaterial color={hovered ? colors.accent : colors.foreground} flatShading metalness={0.42} roughness={0.24} emissive={hovered ? colors.accent : colors.foreground} emissiveIntensity={hovered ? 0.35 : 0.05} />
+            <icosahedronGeometry args={[0.98, 0]} />
+            <meshStandardMaterial
+              color={hovered ? colors.accent : colors.foreground}
+              flatShading
+              metalness={0.42}
+              roughness={0.24}
+              emissive={hovered ? colors.accent : colors.foreground}
+              emissiveIntensity={hovered ? 0.35 : 0.05}
+            />
           </mesh>
         )}
 
@@ -162,23 +177,10 @@ const Marquee = () => {
           </p>
         </div>
 
-        <div className="h-[280px] w-full cursor-grab active:cursor-grabbing md:h-[360px]">
+        <div className="h-[280px] w-full md:h-[360px]">
           <Canvas camera={{ position: [0, 0, 8.5], fov: 42 }} dpr={[1, 1.5]}>
             <Scene />
           </Canvas>
-        </div>
-
-        <div className="mt-5 flex flex-wrap gap-3" aria-label="Project quick links">
-          {projects.map((project) => (
-            <button
-              key={project.slug}
-              type="button"
-              onClick={() => scrollToProject(project.slug)}
-              className="rounded-full border border-border bg-secondary/50 px-4 py-2 text-sm text-muted-foreground transition-smooth hover:border-accent hover:text-accent"
-            >
-              {project.title}
-            </button>
-          ))}
         </div>
       </div>
     </section>
