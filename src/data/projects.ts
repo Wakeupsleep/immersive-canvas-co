@@ -150,6 +150,105 @@ export const projects: Project[] = [
       "https://picsum.photos/seed/re3/900/900",
     ],
   },
+  {
+    slug: "branding",
+    title: "Branding",
+    category: "Brand Identity",
+    year: "2025",
+    client: "Studio Clients",
+    role: "Brand Designer",
+    description:
+      "Identity systems built around story, symbol, and a tight visual language — designed to scale from app icon to billboard.",
+    hero: "from-orange-500/20 via-red-500/10 to-transparent",
+    sections: [
+      {
+        label: "OVERVIEW",
+        heading: "Identities with intent",
+        body: "Brand systems crafted from the strategy outward — logo, type, color, and motion working as one cohesive voice.",
+      },
+      {
+        label: "PROCESS",
+        heading: "Strategy to system",
+        body: "Workshops define the brand's core, then design explorations refine the marks, palette, and rules into a usable toolkit.",
+      },
+      {
+        label: "RESULTS",
+        heading: "Brands that endure",
+        body: "Identities delivered as full guideline systems — flexible enough to grow, strict enough to stay recognizable.",
+      },
+    ],
+    gallery: [
+      "https://picsum.photos/seed/br1/1000/1000",
+      "https://picsum.photos/seed/br2/1000/1000",
+      "https://picsum.photos/seed/br3/1000/1000",
+    ],
+  },
+  {
+    slug: "typography",
+    title: "Typography",
+    category: "Type Design",
+    year: "2026",
+    client: "Independent",
+    role: "Type Designer",
+    description:
+      "Custom type explorations and lettering experiments — building voice through letterforms tailored to each brand.",
+    hero: "from-cyan-500/20 via-blue-500/10 to-transparent",
+    sections: [
+      {
+        label: "OVERVIEW",
+        heading: "Letters with character",
+        body: "From display faces to bespoke wordmarks, every glyph is drawn to add a layer of meaning beyond the words themselves.",
+      },
+      {
+        label: "PROCESS",
+        heading: "Sketch to vector",
+        body: "Concepts begin on paper, move into Glyphs for refinement, and ship as production-ready font files or lockups.",
+      },
+      {
+        label: "RESULTS",
+        heading: "Type that speaks",
+        body: "Custom typefaces and lettering used across packaging, editorial, and digital — giving brands a voice no off-the-shelf font can match.",
+      },
+    ],
+    gallery: [
+      "https://picsum.photos/seed/ty1/1100/800",
+      "https://picsum.photos/seed/ty2/1100/800",
+      "https://picsum.photos/seed/ty3/1100/800",
+    ],
+  },
+  {
+    slug: "web-design",
+    title: "Web Design",
+    category: "Digital Product",
+    year: "2026",
+    client: "Tech & Studio Clients",
+    role: "Product & Web Designer",
+    description:
+      "Immersive websites and product surfaces — interaction, motion, and 3D blended into experiences that feel alive.",
+    hero: "from-violet-500/20 via-pink-500/10 to-transparent",
+    sections: [
+      {
+        label: "OVERVIEW",
+        heading: "Sites that feel like worlds",
+        body: "Designing digital experiences that go beyond pages — rich with motion, sound, and depth, while staying fast and accessible.",
+      },
+      {
+        label: "PROCESS",
+        heading: "Prototype in the browser",
+        body: "Wireframes evolve directly into coded prototypes, letting motion and interaction inform the final visual design.",
+      },
+      {
+        label: "RESULTS",
+        heading: "Experiences that convert",
+        body: "Launches that earn attention, awards, and most importantly — the audience's time on the page.",
+      },
+    ],
+    gallery: [
+      "https://picsum.photos/seed/we1/1200/800",
+      "https://picsum.photos/seed/we2/1200/800",
+      "https://picsum.photos/seed/we3/1200/800",
+    ],
+  },
 ];
 
 export const getProjectBySlug = (slug: string) =>
