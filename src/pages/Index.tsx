@@ -2,7 +2,7 @@ import Cursor from "@/components/portfolio/Cursor";
 import Footer from "@/components/portfolio/Footer";
 import Hero from "@/components/portfolio/Hero";
 import Loader from "@/components/portfolio/Loader";
-import Projects from "@/components/portfolio/Projects";
+import HologramProjects from "@/components/portfolio/HologramProjects";
 
 const Index = () => {
   return (
@@ -12,7 +12,7 @@ const Index = () => {
       <main>
         <h1 className="sr-only">Ashok Thapa — Graphic Designer Portfolio</h1>
         <Hero />
-        <Projects />
+        <HologramProjects />
         <Footer />
       </main>
     </div>
