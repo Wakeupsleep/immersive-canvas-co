@@ -258,7 +258,7 @@ All colors MUST be HSL.
   100% { box-shadow: 0 0 0 0 hsl(var(--accent) / 0); transform: translateY(0); }
 }
 
-.animate-loader-slide { animation: loader-slide-up 1s cubic-bezier(0.65, 0, 0.35, 1) forwards; animation-delay: 2.2s; }
+.animate-loader-slide { animation: loader-slide-up 1s cubic-bezier(0.65, 0, 0.35, 1) forwards; animation-delay: 4s; }
 .animate-fade-blur { animation: fade-blur-in 1.2s ease forwards; opacity: 0; }
 .animate-marquee { animation: marquee 30s linear infinite; }
 .animate-slash-1 { animation: slash-1 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.15s; transform-origin: left center; opacity: 0; }
