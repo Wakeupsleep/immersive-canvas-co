@@ -41,11 +41,18 @@ const Panel = ({
 
   const texture = useTexture(project.gallery?.[0] || "https://picsum.photos/seed/" + project.slug + "/800/1000");
 
+  // Preserve original aspect ratio of the uploaded thumbnail
+  const img: any = (texture as any).image;
+  const aspect = img && img.width && img.height ? img.width / img.height : 0.8;
+  const baseHeight = 4.2;
+  const planeW = baseHeight * aspect;
+  const planeH = baseHeight;
+
   return (
     <group ref={group} position={position} rotation={rotation}>
       {/* Outer energy glow (red on hover) */}
       <mesh ref={glow} position={[0, 0, -0.05]}>
-        <planeGeometry args={[3.6, 4.6]} />
+        <planeGeometry args={[planeW + 0.4, planeH + 0.4]} />
         <meshBasicMaterial
           color={hovered ? "#ff2244" : "#ffffff"}
           transparent
@@ -55,7 +62,7 @@ const Panel = ({
         />
       </mesh>
 
-      {/* Project image */}
+      {/* Project image — exact aspect, no crop */}
       <mesh
         onPointerEnter={(e) => {
           e.stopPropagation();
@@ -73,7 +80,7 @@ const Panel = ({
           onOpen(project.slug);
         }}
       >
-        <planeGeometry args={[3.2, 4.2]} />
+        <planeGeometry args={[planeW, planeH]} />
         <meshBasicMaterial map={texture} toneMapped={false} />
       </mesh>
 
