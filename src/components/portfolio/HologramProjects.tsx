@@ -39,60 +39,56 @@ const Panel = ({
     }
   });
 
+  const texture = useTexture(project.gallery?.[0] || "https://picsum.photos/seed/" + project.slug + "/800/1000");
+
   return (
     <group ref={group} position={position} rotation={rotation}>
-      {/* Outer energy glow */}
+      {/* Outer energy glow (red on hover) */}
       <mesh ref={glow} position={[0, 0, -0.05]}>
         <planeGeometry args={[3.6, 4.6]} />
         <meshBasicMaterial
-          color={hovered ? "#ff2244" : "#3aaaff"}
+          color={hovered ? "#ff2244" : "#ffffff"}
           transparent
-          opacity={0.8}
+          opacity={0.0}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
       </mesh>
 
-      {/* Frame */}
-      <mesh>
+      {/* Project image */}
+      <mesh
+        onPointerEnter={(e) => {
+          e.stopPropagation();
+          setHovered(true);
+          playWoosh();
+          document.body.style.cursor = "pointer";
+        }}
+        onPointerLeave={() => {
+          setHovered(false);
+          document.body.style.cursor = "auto";
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          playSwish();
+          onOpen(project.slug);
+        }}
+      >
         <planeGeometry args={[3.2, 4.2]} />
-        <meshBasicMaterial
-          color={hovered ? "#ff3355" : "#0af"}
-          transparent
-          opacity={0.12}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-        />
+        <meshBasicMaterial map={texture} toneMapped={false} />
       </mesh>
 
-      {/* Holographic content via HTML overlay */}
+      {/* Title overlay below */}
       <Html
         transform
         distanceFactor={4}
-        position={[0, 0, 0.01]}
+        position={[0, -2.45, 0.01]}
         occlude={false}
-        style={{ pointerEvents: "auto" }}
+        pointerEvents="none"
+        style={{ pointerEvents: "none" }}
       >
-        <div
-          onPointerEnter={() => {
-            setHovered(true);
-            playWoosh();
-          }}
-          onPointerLeave={() => setHovered(false)}
-          onClick={() => {
-            playSwish();
-            onOpen(project.slug);
-          }}
-          className={`floating-panel ${hovered ? "is-hot" : ""}`}
-        >
-          <p className="floating-tag">{project.category}</p>
+        <div className={`floating-label ${hovered ? "is-hot" : ""}`}>
+          <p className="floating-tag">{project.category} · {project.year}</p>
           <h3 className="floating-title">{project.title}</h3>
-          <p className="floating-desc">{project.description}</p>
-          <div className="floating-meta">
-            <span>{project.year}</span>
-            <span>{project.role}</span>
-          </div>
-          <div className="floating-cta">View Project →</div>
         </div>
       </Html>
     </group>
