@@ -86,8 +86,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-32 md:px-20 md:pt-40">
-      <HeroBackground />
+    <section ref={sectionRef} className="relative flex min-h-screen items-center overflow-hidden px-6 pt-32 md:px-20 md:pt-40">
+      <div ref={bgRef} className="absolute inset-0 z-0 will-change-transform">
+        <HeroBackground />
+      </div>
       <a
         href="/CV.pdf"
         download="Ashok-Thapa-CV.pdf"
@@ -102,9 +104,9 @@ const Hero = () => {
         {"\n"}
       </div>
 
-      <div className="relative z-10 max-w-6xl">
+      <div ref={contentRef} className="relative z-10 max-w-6xl will-change-transform">
         <p className="mb-6 text-[11px] tracking-[0.4em] text-accent">
-          ⌖ Creative Designer/Animator
+          ⌖ Motion • 3D • Visual Architect
         </p>
         <h1 className="font-display text-[18vw] leading-[0.85] tracking-tight md:text-[10rem]">
           Ashok
