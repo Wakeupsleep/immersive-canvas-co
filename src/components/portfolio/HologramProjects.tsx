@@ -83,18 +83,16 @@ const Panel = ({
             playSwish();
             onOpen(project.slug);
           }}
-          className={`hologram-panel ${hovered ? "is-hot" : ""}`}
+          className={`floating-panel ${hovered ? "is-hot" : ""}`}
         >
-          <div className="hologram-scan" />
-          <div className="hologram-grid" />
-          <p className="hologram-tag">⌖ {project.category}</p>
-          <h3 className="hologram-title">{project.title}</h3>
-          <p className="hologram-desc">{project.description}</p>
-          <div className="hologram-meta">
+          <p className="floating-tag">{project.category}</p>
+          <h3 className="floating-title">{project.title}</h3>
+          <p className="floating-desc">{project.description}</p>
+          <div className="floating-meta">
             <span>{project.year}</span>
             <span>{project.role}</span>
           </div>
-          <div className="hologram-cta">ENTER DIMENSION →</div>
+          <div className="floating-cta">View Project →</div>
         </div>
       </Html>
     </group>
