@@ -1,10 +1,47 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroBackground from "./HeroBackground";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const audioCtxRef = useRef<AudioContext | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Cinematic exit: fade content + parallax background scale
+      gsap.to(contentRef.current, {
+        opacity: 0,
+        y: -80,
+        filter: "blur(8px)",
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+      gsap.to(bgRef.current, {
+        scale: 1.25,
+        opacity: 0.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   const playWhoosh = () => {
     try {
