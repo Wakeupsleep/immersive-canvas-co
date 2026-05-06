@@ -1,10 +1,47 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroBackground from "./HeroBackground";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const audioCtxRef = useRef<AudioContext | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Cinematic exit: fade content + parallax background scale
+      gsap.to(contentRef.current, {
+        opacity: 0,
+        y: -80,
+        filter: "blur(8px)",
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+      gsap.to(bgRef.current, {
+        scale: 1.25,
+        opacity: 0.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   const playWhoosh = () => {
     try {
@@ -49,8 +86,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-32 md:px-20 md:pt-40">
-      <HeroBackground />
+    <section ref={sectionRef} className="relative flex min-h-screen items-center overflow-hidden px-6 pt-32 md:px-20 md:pt-40">
+      <div ref={bgRef} className="absolute inset-0 z-0 will-change-transform">
+        <HeroBackground />
+      </div>
       <a
         href="/CV.pdf"
         download="Ashok-Thapa-CV.pdf"
@@ -65,9 +104,9 @@ const Hero = () => {
         {"\n"}
       </div>
 
-      <div className="relative z-10 max-w-6xl">
+      <div ref={contentRef} className="relative z-10 max-w-6xl will-change-transform">
         <p className="mb-6 text-[11px] tracking-[0.4em] text-accent">
-          ⌖ Creative Designer/Animator
+          ⌖ Motion • 3D • Visual Architect
         </p>
         <h1 className="font-display text-[18vw] leading-[0.85] tracking-tight md:text-[10rem]">
           Ashok
