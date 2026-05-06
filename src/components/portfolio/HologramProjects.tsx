@@ -34,8 +34,8 @@ const Panel = ({
       group.current.position.y = position[1] + Math.sin(t * 0.8 + position[0]) * 0.15;
     }
     if (glow.current) {
-      const target = hovered ? 1.6 : 0.8;
-      glow.current.material.opacity += (target - glow.current.material.opacity) * 0.1;
+      const target = hovered ? 1.0 : 0.0;
+      glow.current.material.opacity += (target - glow.current.material.opacity) * 0.12;
     }
   });
 
