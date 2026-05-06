@@ -370,73 +370,28 @@ All colors MUST be HSL.
 
 
 
-/* ===== Floating archive panels (clean, no hologram chrome) ===== */
-.floating-panel {
-  position: relative;
-  width: 280px;
-  height: 360px;
-  padding: 28px 24px;
-  border-radius: 20px;
-  background: linear-gradient(160deg, hsl(0 0% 100% / 0.04), hsl(0 0% 0% / 0.55));
-  border: 1px solid hsl(0 0% 100% / 0.12);
-  box-shadow:
-    0 30px 80px -20px hsl(0 0% 0% / 0.7),
-    inset 0 0 40px hsl(0 0% 100% / 0.03);
-  color: hsl(var(--foreground));
+/* ===== Floating project labels (under image planes) ===== */
+.floating-label {
+  width: 320px;
+  text-align: center;
+  transform: translateX(-50%);
   font-family: ui-sans-serif, system-ui, sans-serif;
-  cursor: pointer;
-  overflow: hidden;
-  backdrop-filter: blur(6px);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  display: flex;
-  flex-direction: column;
-}
-.floating-panel.is-hot {
-  border-color: hsl(var(--accent) / 0.9);
-  box-shadow:
-    0 0 60px hsl(var(--accent) / 0.55),
-    0 0 120px hsl(var(--accent) / 0.25),
-    inset 0 0 40px hsl(var(--accent) / 0.12);
-  transform: translate(-50%, -50%) scale(1.04);
+  color: hsl(var(--foreground));
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 .floating-tag {
-  font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
   color: hsl(var(--muted-foreground));
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
-.floating-panel.is-hot .floating-tag { color: hsl(var(--accent)); }
 .floating-title {
   font-family: var(--font-display, ui-serif, Georgia, serif);
-  font-size: 38px; line-height: 1; letter-spacing: -0.02em;
-  margin-bottom: 16px;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
-.floating-desc {
-  font-size: 12px; line-height: 1.55;
-  color: hsl(var(--muted-foreground));
-  margin-bottom: auto;
-}
-.floating-meta {
-  display: flex; justify-content: space-between;
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
-  border-top: 1px solid hsl(0 0% 100% / 0.1);
-  padding-top: 14px;
-  margin-top: 16px;
-  margin-bottom: 14px;
-}
-.floating-cta {
-  font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
-  text-align: center;
-  padding: 10px;
-  border: 1px solid hsl(0 0% 100% / 0.2);
-  border-radius: 999px;
-  transition: all 0.3s ease;
-}
-.floating-panel.is-hot .floating-cta {
-  border-color: hsl(var(--accent));
-  background: hsl(var(--accent) / 0.15);
-  color: hsl(var(--accent-foreground));
-}
+.floating-label.is-hot { color: hsl(var(--accent)); text-shadow: 0 0 24px hsl(var(--accent) / 0.7); }
+.floating-label.is-hot .floating-tag { color: hsl(var(--accent)); }
+
