@@ -209,11 +209,11 @@ const HologramProjects = () => {
       style={{ height: "100vh" }}
     >
       <div className="pointer-events-none absolute left-1/2 top-6 z-20 -translate-x-1/2 text-center">
-        <p className="text-[11px] tracking-[0.4em] text-accent">⌖ DIMENSIONAL ARCHIVE</p>
+        <p className="text-[11px] tracking-[0.4em] text-accent">⌖ SELECTED WORK</p>
         <h2 className="font-display text-3xl tracking-tight md:text-5xl">
-          Project<span className="italic text-muted-foreground"> Hologram</span>
+          Projects
         </h2>
-        <p className="mt-1 text-xs text-muted-foreground">scroll to travel between dimensions</p>
+        <p className="mt-1 text-xs text-muted-foreground">scroll to travel through the archive</p>
       </div>
 
       <Canvas
