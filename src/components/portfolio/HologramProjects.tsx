@@ -154,9 +154,12 @@ const Dust = () => {
   );
 };
 
+const FLOATING_SLUGS = ["illustrations", "motions", "branding", "research"];
+
 const Scene = ({ onOpen }: { onOpen: (slug: string) => void }) => {
+  const visible = projects.filter((p) => FLOATING_SLUGS.includes(p.slug));
   const spacing = 7;
-  const totalLength = projects.length * spacing;
+  const totalLength = visible.length * spacing;
 
   return (
     <>
@@ -168,9 +171,9 @@ const Scene = ({ onOpen }: { onOpen: (slug: string) => void }) => {
 
       <Dust />
 
-      <ScrollControls pages={projects.length} damping={0.25}>
+      <ScrollControls pages={visible.length} damping={0.25}>
         <CameraRig totalLength={totalLength} />
-        {projects.map((p, i) => {
+        {visible.map((p, i) => {
           const z = -i * spacing;
           const x = i % 2 === 0 ? -1.8 : 1.8;
           const y = i % 2 === 0 ? 0.3 : -0.3;
@@ -203,9 +206,6 @@ const HologramProjects = () => {
     >
       <div className="pointer-events-none absolute left-1/2 top-6 z-20 -translate-x-1/2 text-center">
         <p className="text-[11px] tracking-[0.4em] text-accent">⌖ SELECTED WORK</p>
-        <h2 className="font-display text-3xl tracking-tight md:text-5xl">
-          Projects
-        </h2>
         <p className="mt-1 text-xs text-muted-foreground">scroll to travel through the archive</p>
       </div>
 
