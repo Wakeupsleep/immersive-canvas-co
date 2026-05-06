@@ -83,7 +83,6 @@ const Panel = ({
         distanceFactor={4}
         position={[0, -2.45, 0.01]}
         occlude={false}
-        pointerEvents="none"
         style={{ pointerEvents: "none" }}
       >
         <div className={`floating-label ${hovered ? "is-hot" : ""}`}>
