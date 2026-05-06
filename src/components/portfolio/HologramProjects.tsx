@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Html, ScrollControls, useScroll, Float } from "@react-three/drei";
+import { Html, ScrollControls, useScroll, Float, useTexture } from "@react-three/drei";
 import { Suspense, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { useNavigate } from "react-router-dom";
