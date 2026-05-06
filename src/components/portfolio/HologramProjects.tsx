@@ -83,18 +83,16 @@ const Panel = ({
             playSwish();
             onOpen(project.slug);
           }}
-          className={`hologram-panel ${hovered ? "is-hot" : ""}`}
+          className={`floating-panel ${hovered ? "is-hot" : ""}`}
         >
-          <div className="hologram-scan" />
-          <div className="hologram-grid" />
-          <p className="hologram-tag">⌖ {project.category}</p>
-          <h3 className="hologram-title">{project.title}</h3>
-          <p className="hologram-desc">{project.description}</p>
-          <div className="hologram-meta">
+          <p className="floating-tag">{project.category}</p>
+          <h3 className="floating-title">{project.title}</h3>
+          <p className="floating-desc">{project.description}</p>
+          <div className="floating-meta">
             <span>{project.year}</span>
             <span>{project.role}</span>
           </div>
-          <div className="hologram-cta">ENTER DIMENSION →</div>
+          <div className="floating-cta">View Project →</div>
         </div>
       </Html>
     </group>
@@ -209,11 +207,11 @@ const HologramProjects = () => {
       style={{ height: "100vh" }}
     >
       <div className="pointer-events-none absolute left-1/2 top-6 z-20 -translate-x-1/2 text-center">
-        <p className="text-[11px] tracking-[0.4em] text-accent">⌖ DIMENSIONAL ARCHIVE</p>
+        <p className="text-[11px] tracking-[0.4em] text-accent">⌖ SELECTED WORK</p>
         <h2 className="font-display text-3xl tracking-tight md:text-5xl">
-          Project<span className="italic text-muted-foreground"> Hologram</span>
+          Projects
         </h2>
-        <p className="mt-1 text-xs text-muted-foreground">scroll to travel between dimensions</p>
+        <p className="mt-1 text-xs text-muted-foreground">scroll to travel through the archive</p>
       </div>
 
       <Canvas
