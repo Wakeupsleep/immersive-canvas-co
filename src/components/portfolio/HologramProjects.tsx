@@ -32,8 +32,15 @@ const Panel = ({
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
+    const mx = state.pointer.x;
+    const my = state.pointer.y;
     if (group.current) {
       group.current.position.y = position[1] + Math.sin(t * 0.8 + position[0]) * 0.15;
+      // Cursor-reactive parallax tilt
+      const targetRX = rotation[0] + my * 0.25;
+      const targetRY = rotation[1] + mx * 0.35;
+      group.current.rotation.x += (targetRX - group.current.rotation.x) * 0.06;
+      group.current.rotation.y += (targetRY - group.current.rotation.y) * 0.06;
     }
     if (glow.current) {
       const target = hovered ? 1.0 : 0.0;
