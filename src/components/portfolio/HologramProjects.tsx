@@ -189,7 +189,7 @@ const Scene = ({ onOpen }: { onOpen: (slug: string) => void }) => {
 
       <Dust />
 
-      <ScrollControls pages={visible.length} damping={0.25}>
+      <ScrollControls pages={visible.length} damping={0.5}>
         <CameraRig totalLength={totalLength} />
         {visible.map((p, i) => {
           const z = -i * spacing;
@@ -208,6 +208,17 @@ const Scene = ({ onOpen }: { onOpen: (slug: string) => void }) => {
           );
         })}
       </ScrollControls>
+
+      <EffectComposer multisampling={0}>
+        <Bloom intensity={0.9} luminanceThreshold={0.2} luminanceSmoothing={0.6} mipmapBlur />
+        <ChromaticAberration
+          blendFunction={BlendFunction.NORMAL}
+          offset={[0.0012, 0.0012] as any}
+          radialModulation={false}
+          modulationOffset={0}
+        />
+        <Vignette eskil={false} offset={0.2} darkness={0.85} />
+      </EffectComposer>
     </>
   );
 };
