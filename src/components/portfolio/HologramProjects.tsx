@@ -112,11 +112,11 @@ const CameraRig = ({ totalLength }: { totalLength: number }) => {
   useFrame(() => {
     const offset = scroll.offset; // 0..1
     const z = 6 - offset * totalLength;
-    // Slight S-curve sway
-    const x = Math.sin(offset * Math.PI * 2) * 1.2;
-    const y = Math.cos(offset * Math.PI * 1.5) * 0.4;
-    camera.position.lerp(target.set(x, y, z), 0.08);
-    camera.lookAt(0, 0, z - 4);
+    // Dramatic left-to-right sweep across the archive
+    const x = Math.sin(offset * Math.PI * 4) * 5.5;
+    const y = Math.sin(offset * Math.PI * 2) * 0.6;
+    camera.position.lerp(target.set(x, y, z), 0.06);
+    camera.lookAt(-x * 0.3, 0, z - 4);
   });
   return null;
 };
