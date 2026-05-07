@@ -1,5 +1,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html, ScrollControls, useScroll, Float, useTexture } from "@react-three/drei";
+import { EffectComposer, Bloom, ChromaticAberration, Vignette } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 import { Suspense, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { useNavigate } from "react-router-dom";
@@ -30,8 +32,15 @@ const Panel = ({
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
+    const mx = state.pointer.x;
+    const my = state.pointer.y;
     if (group.current) {
       group.current.position.y = position[1] + Math.sin(t * 0.8 + position[0]) * 0.15;
+      // Cursor-reactive parallax tilt
+      const targetRX = rotation[0] + my * 0.25;
+      const targetRY = rotation[1] + mx * 0.35;
+      group.current.rotation.x += (targetRX - group.current.rotation.x) * 0.06;
+      group.current.rotation.y += (targetRY - group.current.rotation.y) * 0.06;
     }
     if (glow.current) {
       const target = hovered ? 1.0 : 0.0;
@@ -109,13 +118,15 @@ const CameraRig = ({ totalLength }: { totalLength: number }) => {
   const { camera } = useThree();
   const target = useMemo(() => new THREE.Vector3(0, 0, 0), []);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     const offset = scroll.offset; // 0..1
     const z = 6 - offset * totalLength;
     // Dramatic left-to-right sweep across the archive
     const x = Math.sin(offset * Math.PI * 4) * 5.5;
     const y = Math.sin(offset * Math.PI * 2) * 0.6;
-    camera.position.lerp(target.set(x, y, z), 0.06);
+    // Smooth cinematic easing (frame-rate independent)
+    const k = 1 - Math.pow(0.001, delta);
+    camera.position.lerp(target.set(x, y, z), k * 0.5);
     camera.lookAt(-x * 0.3, 0, z - 4);
   });
   return null;
@@ -178,7 +189,7 @@ const Scene = ({ onOpen }: { onOpen: (slug: string) => void }) => {
 
       <Dust />
 
-      <ScrollControls pages={visible.length} damping={0.25}>
+      <ScrollControls pages={visible.length} damping={0.5}>
         <CameraRig totalLength={totalLength} />
         {visible.map((p, i) => {
           const z = -i * spacing;
@@ -197,6 +208,17 @@ const Scene = ({ onOpen }: { onOpen: (slug: string) => void }) => {
           );
         })}
       </ScrollControls>
+
+      <EffectComposer multisampling={0}>
+        <Bloom intensity={0.9} luminanceThreshold={0.2} luminanceSmoothing={0.6} mipmapBlur />
+        <ChromaticAberration
+          blendFunction={BlendFunction.NORMAL}
+          offset={[0.0012, 0.0012] as any}
+          radialModulation={false}
+          modulationOffset={0}
+        />
+        <Vignette eskil={false} offset={0.2} darkness={0.85} />
+      </EffectComposer>
     </>
   );
 };
