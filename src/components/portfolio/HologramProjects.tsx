@@ -118,13 +118,15 @@ const CameraRig = ({ totalLength }: { totalLength: number }) => {
   const { camera } = useThree();
   const target = useMemo(() => new THREE.Vector3(0, 0, 0), []);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     const offset = scroll.offset; // 0..1
     const z = 6 - offset * totalLength;
     // Dramatic left-to-right sweep across the archive
     const x = Math.sin(offset * Math.PI * 4) * 5.5;
     const y = Math.sin(offset * Math.PI * 2) * 0.6;
-    camera.position.lerp(target.set(x, y, z), 0.06);
+    // Smooth cinematic easing (frame-rate independent)
+    const k = 1 - Math.pow(0.001, delta);
+    camera.position.lerp(target.set(x, y, z), k * 0.5);
     camera.lookAt(-x * 0.3, 0, z - 4);
   });
   return null;
