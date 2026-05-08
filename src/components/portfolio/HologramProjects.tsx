@@ -244,6 +244,33 @@ const HologramProjects = () => {
         <p className="mt-1 text-xs text-muted-foreground">scroll to travel through the archive</p>
       </div>
 
+      {/* Wonder-games style status HUD */}
+      <div className="pointer-events-none absolute left-6 top-6 z-20">
+        <div className="wg-hud">
+          <span className="dot" />
+          Site is online
+          <span className="fps">(60 FPS)</span>
+        </div>
+      </div>
+
+      {/* Center sparkle */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+        <span className="wg-sparkle">✦</span>
+      </div>
+
+      {/* Bottom toolbar */}
+      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
+        <div className="wg-toolbar">
+          <span className="logo">w.</span>
+          <button type="button">Creator</button>
+          <button type="button">Font &amp; Color</button>
+          <button type="button">Details</button>
+          <button type="button">Elements</button>
+          <button type="button">Score</button>
+          <button type="button" className="cta">Visit Site</button>
+        </div>
+      </div>
+
       <Canvas
         dpr={[1, 1.5]}
         camera={{ position: [0, 0, 6], fov: 55 }}
