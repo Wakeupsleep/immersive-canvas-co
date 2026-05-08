@@ -168,9 +168,9 @@ const Dust = () => {
       </bufferGeometry>
       <pointsMaterial
         size={0.04}
-        color="#88c2ff"
+        color="#c6ff3d"
         transparent
-        opacity={0.6}
+        opacity={0.55}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
