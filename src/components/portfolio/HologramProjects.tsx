@@ -59,17 +59,23 @@ const Panel = ({
 
   return (
     <group ref={group} position={position} rotation={rotation}>
-      {/* Outer energy glow (red on hover) */}
+      {/* Outer neon glow */}
       <mesh ref={glow} position={[0, 0, -0.05]}>
-        <planeGeometry args={[planeW + 0.4, planeH + 0.4]} />
+        <planeGeometry args={[planeW + 0.5, planeH + 0.5]} />
         <meshBasicMaterial
-          color={hovered ? "#ff2244" : "#ffffff"}
+          color={hovered ? "#c6ff3d" : "#39ffa1"}
           transparent
           opacity={0.0}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
       </mesh>
+
+      {/* Thin neon frame (Wonder Games style) */}
+      <lineSegments position={[0, 0, 0.005]}>
+        <edgesGeometry args={[new THREE.PlaneGeometry(planeW + 0.06, planeH + 0.06)]} />
+        <lineBasicMaterial color={hovered ? "#c6ff3d" : "#39ffa1"} transparent opacity={0.85} />
+      </lineSegments>
 
       {/* Project image — exact aspect, no crop */}
       <mesh
