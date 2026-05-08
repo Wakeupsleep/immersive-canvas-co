@@ -392,6 +392,75 @@ All colors MUST be HSL.
   line-height: 1;
   letter-spacing: -0.02em;
 }
-.floating-label.is-hot { color: hsl(var(--accent)); text-shadow: 0 0 24px hsl(var(--accent) / 0.7); }
-.floating-label.is-hot .floating-tag { color: hsl(var(--accent)); }
+.floating-label.is-hot { color: hsl(75 100% 60%); text-shadow: 0 0 24px hsl(75 100% 60% / 0.8); }
+.floating-label.is-hot .floating-tag { color: hsl(75 100% 60%); }
+
+/* ===== Wonder-games style HUD ===== */
+.wg-hud {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: hsl(0 0% 85%);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: hsl(0 0% 4% / 0.6);
+  border: 1px solid hsl(0 0% 100% / 0.08);
+  backdrop-filter: blur(10px);
+}
+.wg-hud .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: hsl(75 100% 60%);
+  box-shadow: 0 0 10px hsl(75 100% 60% / 0.9);
+}
+.wg-hud .fps { color: hsl(0 0% 55%); margin-left: 4px; }
+
+.wg-toolbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 18px;
+  background: hsl(0 0% 4% / 0.7);
+  border: 1px solid hsl(0 0% 100% / 0.08);
+  backdrop-filter: blur(10px);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.wg-toolbar .logo {
+  width: 36px; height: 36px; border-radius: 12px;
+  background: hsl(0 0% 100%); color: hsl(0 0% 0%);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px;
+  margin-right: 4px;
+}
+.wg-toolbar button {
+  background: transparent;
+  color: hsl(0 0% 78%);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+.wg-toolbar button:hover { background: hsl(0 0% 100% / 0.06); color: hsl(0 0% 100%); }
+.wg-toolbar .cta {
+  background: hsl(75 100% 60%);
+  color: hsl(0 0% 6%);
+  font-weight: 600;
+  box-shadow: 0 0 24px hsl(75 100% 60% / 0.5);
+}
+.wg-toolbar .cta:hover { background: hsl(75 100% 70%); color: hsl(0 0% 6%); }
+
+.wg-sparkle {
+  color: hsl(0 0% 100%);
+  font-size: 22px;
+  text-shadow: 0 0 18px hsl(0 0% 100% / 0.8);
+  animation: wg-twinkle 2.4s ease-in-out infinite;
+}
+@keyframes wg-twinkle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
 

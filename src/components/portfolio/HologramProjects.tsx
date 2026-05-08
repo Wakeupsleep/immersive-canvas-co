@@ -59,17 +59,23 @@ const Panel = ({
 
   return (
     <group ref={group} position={position} rotation={rotation}>
-      {/* Outer energy glow (red on hover) */}
+      {/* Outer neon glow */}
       <mesh ref={glow} position={[0, 0, -0.05]}>
-        <planeGeometry args={[planeW + 0.4, planeH + 0.4]} />
+        <planeGeometry args={[planeW + 0.5, planeH + 0.5]} />
         <meshBasicMaterial
-          color={hovered ? "#ff2244" : "#ffffff"}
+          color={hovered ? "#c6ff3d" : "#39ffa1"}
           transparent
           opacity={0.0}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
       </mesh>
+
+      {/* Thin neon frame (Wonder Games style) */}
+      <lineSegments position={[0, 0, 0.005]}>
+        <edgesGeometry args={[new THREE.PlaneGeometry(planeW + 0.06, planeH + 0.06)]} />
+        <lineBasicMaterial color={hovered ? "#c6ff3d" : "#39ffa1"} transparent opacity={0.85} />
+      </lineSegments>
 
       {/* Project image — exact aspect, no crop */}
       <mesh
@@ -162,9 +168,9 @@ const Dust = () => {
       </bufferGeometry>
       <pointsMaterial
         size={0.04}
-        color="#88c2ff"
+        color="#c6ff3d"
         transparent
-        opacity={0.6}
+        opacity={0.55}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
@@ -181,11 +187,11 @@ const Scene = ({ onOpen }: { onOpen: (slug: string) => void }) => {
 
   return (
     <>
-      <fog attach="fog" args={["#02030a", 6, 26]} />
-      <color attach="background" args={["#02030a"]} />
-      <ambientLight intensity={0.4} />
-      <pointLight position={[0, 4, 4]} intensity={1.2} color="#3aaaff" />
-      <pointLight position={[0, -4, -4]} intensity={0.8} color="#ff2244" />
+      <fog attach="fog" args={["#050807", 6, 26]} />
+      <color attach="background" args={["#050807"]} />
+      <ambientLight intensity={0.35} />
+      <pointLight position={[0, 4, 4]} intensity={1.2} color="#39ffa1" />
+      <pointLight position={[0, -4, -4]} intensity={0.8} color="#ff3df0" />
 
       <Dust />
 
@@ -236,6 +242,33 @@ const HologramProjects = () => {
       <div className="pointer-events-none absolute left-1/2 top-6 z-20 -translate-x-1/2 text-center">
         <p className="text-[11px] tracking-[0.4em] text-accent">⌖ SELECTED WORK</p>
         <p className="mt-1 text-xs text-muted-foreground">scroll to travel through the archive</p>
+      </div>
+
+      {/* Wonder-games style status HUD */}
+      <div className="pointer-events-none absolute left-6 top-6 z-20">
+        <div className="wg-hud">
+          <span className="dot" />
+          Site is online
+          <span className="fps">(60 FPS)</span>
+        </div>
+      </div>
+
+      {/* Center sparkle */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+        <span className="wg-sparkle">✦</span>
+      </div>
+
+      {/* Bottom toolbar */}
+      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
+        <div className="wg-toolbar">
+          <span className="logo">w.</span>
+          <button type="button">Creator</button>
+          <button type="button">Font &amp; Color</button>
+          <button type="button">Details</button>
+          <button type="button">Elements</button>
+          <button type="button">Score</button>
+          <button type="button" className="cta">Visit Site</button>
+        </div>
       </div>
 
       <Canvas
