@@ -1,19 +1,27 @@
 import Cursor from "@/components/portfolio/Cursor";
-import Footer from "@/components/portfolio/Footer";
-import Hero from "@/components/portfolio/Hero";
-import Loader from "@/components/portfolio/Loader";
-import HologramProjects from "@/components/portfolio/HologramProjects";
+import SidewaveLoader from "@/components/sidewave/Loader";
+import SideMenu from "@/components/sidewave/SideMenu";
+import {
+  OriginSection,
+  AboutSection,
+  ServicesSection,
+  UseCasesSection,
+  ContactSection,
+} from "@/components/sidewave/Sections";
 
 const Index = () => {
   return (
-    <div className="min-h-screen overflow-x-hidden text-foreground">
-      <Loader />
+    <div className="min-h-screen overflow-x-hidden bg-black text-foreground">
+      <SidewaveLoader />
       <Cursor />
+      <SideMenu />
       <main>
-        <h1 className="sr-only">Ashok Thapa — Graphic Designer Portfolio</h1>
-        <Hero />
-        <HologramProjects />
-        <Footer />
+        <h1 className="sr-only">Ashok Thapa — Graphic & Motion Designer</h1>
+        <OriginSection />
+        <AboutSection />
+        <ServicesSection />
+        <UseCasesSection />
+        <ContactSection />
       </main>
     </div>
   );
