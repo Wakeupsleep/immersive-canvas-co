@@ -187,11 +187,11 @@ const Scene = ({ onOpen }: { onOpen: (slug: string) => void }) => {
 
   return (
     <>
-      <fog attach="fog" args={["#02030a", 6, 26]} />
-      <color attach="background" args={["#02030a"]} />
-      <ambientLight intensity={0.4} />
-      <pointLight position={[0, 4, 4]} intensity={1.2} color="#3aaaff" />
-      <pointLight position={[0, -4, -4]} intensity={0.8} color="#ff2244" />
+      <fog attach="fog" args={["#050807", 6, 26]} />
+      <color attach="background" args={["#050807"]} />
+      <ambientLight intensity={0.35} />
+      <pointLight position={[0, 4, 4]} intensity={1.2} color="#39ffa1" />
+      <pointLight position={[0, -4, -4]} intensity={0.8} color="#ff3df0" />
 
       <Dust />
 
